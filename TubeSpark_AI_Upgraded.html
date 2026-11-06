@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d20">
+<title>TubeSpark AI - YouTube SEO Studio</title>
+<meta name="description" content="Create fresh YouTube titles, descriptions, SEO tags and hashtags with TubeSpark AI.">
+<style>
+:root{
+  --bg:#080c1b;--panel:#131b34;--panel2:#182441;--pink:#EC4899;
+  --purple:#8b5cf6;--blue:#438cff;--text:#fff;--muted:#aab5d2;
+  --border:#303d5e;--green:#35d6a0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at top,#302044 0%,transparent 48%),var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.container{width:min(100% - 24px,880px);margin:auto}
+.header{padding:19px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #ffffff14}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pink),var(--purple));font-size:24px;box-shadow:0 5px 25px #ec489955}
+.brand-name{font-size:21px;font-weight:800;letter-spacing:-.5px}.brand-name span{color:#f9a8d4}
+.version{font-size:10px;color:#f9a8d4;background:#ec489922;border:1px solid #ec489955;padding:6px 9px;border-radius:20px}
+.hero{text-align:center;padding:40px 0 27px}
+.hero-label{display:inline-block;color:#f9a8d4;background:#ec489922;border:1px solid #ec489955;padding:8px 13px;border-radius:30px;font-size:12px;margin-bottom:17px}
+.hero h1{font-size:clamp(30px,7vw,49px);line-height:1.13;font-weight:900;letter-spacing:-1.5px}
+.gradient-text{background:linear-gradient(90deg,#f9a8d4,#a78bfa,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:14px;line-height:1.7;max-width:560px;margin:14px auto 0}
+.ad-slot{width:100%;min-height:70px;background:#10172c;border:1px dashed #445071;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;margin:18px 0;padding:12px;text-align:center}
+.ad-label{color:#8f9bb9;font-size:9px;letter-spacing:2px}.ad-text{color:#65718f;font-size:12px}
+.generator-card{background:linear-gradient(145deg,#191d39,#10172c);border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 15px 50px #0005}
+.card-heading{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.heading-icon{width:43px;height:43px;background:#ec489922;border:1px solid #ec489966;border-radius:13px;display:grid;place-items:center;font-size:21px}
+.card-heading h2{font-size:19px}.card-heading p{font-size:11px;color:var(--muted);margin-top:5px}
+.form-group{margin-bottom:17px}.form-group label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.form-group label span{color:#f9a8d4}
+.form-control{width:100%;background:#0a1023;color:white;border:1px solid #34415f;padding:14px;border-radius:11px;outline:none;transition:.2s}
+.form-control:focus{border-color:var(--pink);box-shadow:0 0 0 3px #ec489922}.form-control::placeholder{color:#71809f}
+select.form-control{cursor:pointer}textarea.form-control{min-height:90px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.generate-button{width:100%;padding:16px;border:0;border-radius:12px;color:white;font-size:16px;font-weight:800;letter-spacing:.3px;background:linear-gradient(100deg,var(--pink),var(--purple));box-shadow:0 7px 25px #ec489955;transition:.2s}
+.generate-button:hover{transform:translateY(-2px)}.generate-button:disabled{opacity:.6;cursor:wait}
+.secure-note{color:#8d9ab7;font-size:11px;text-align:center;margin-top:12px}
+.loading-box{display:none;margin-top:20px;padding:22px 17px;background:#0b1228;border:1px solid #75436f;border-radius:16px;text-align:center}
+.loading-box.show{display:block;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.loading-icon{font-size:32px;display:inline-block;animation:rotate 2s linear infinite}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.loading-box h3{margin:12px 0 7px;font-size:18px}.loading-box>p{color:var(--muted);font-size:12px;margin-bottom:18px}
+.loading-step{text-align:left;padding:11px;margin:7px 0;background:#18213c;border-radius:9px;color:#8d9ab8;font-size:12px;display:flex;justify-content:space-between;gap:10px}
+.loading-step.active{color:white;border:1px solid var(--pink)}.loading-step.done{color:var(--green)}
+.progress-track{height:7px;background:#303956;border-radius:20px;overflow:hidden;margin-top:17px}
+.progress-bar{width:0;height:100%;background:linear-gradient(90deg,var(--pink),#8b5cf6);border-radius:20px;transition:width .25s}
+.progress-number{color:#f9a8d4;font-size:12px;margin-top:9px}
+.results{display:none;margin-top:24px}.results.show{display:block;animation:fadeIn .4s ease}
+.result-heading{font-size:22px;margin-bottom:7px}.result-subtitle{color:var(--muted);font-size:12px;margin-bottom:16px}
+.result-card{background:#121b34;border:1px solid #303d5e;border-radius:15px;padding:16px;margin-bottom:14px}
+.result-title{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}.result-title h3{font-size:15px}
+.result-content{white-space:pre-wrap;overflow-wrap:anywhere;color:#e4e9ff;background:#090f21;border:1px solid #293657;padding:14px;border-radius:10px;font-size:13px;line-height:1.8}
+.copy-button{width:100%;padding:11px;margin-top:10px;background:linear-gradient(90deg,#db348b,#824bff);color:white;border-radius:9px;border:0;font-weight:bold}
+.reset-button{width:100%;padding:13px;background:#202c49;border:1px solid #3b4b6c;color:white;border-radius:10px;margin-top:5px}
+.features{margin:38px 0}.features h2{font-size:21px;text-align:center;margin-bottom:18px}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.feature{padding:16px;background:#131c35;border:1px solid #293654;border-radius:14px}
+.feature-icon{font-size:24px;margin-bottom:10px}.feature h3{font-size:13px;margin-bottom:7px}.feature p{font-size:11px;color:var(--muted);line-height:1.6}
+footer{border-top:1px solid #29334f;padding:23px 0;text-align:center;margin-top:32px}
+footer h3{font-size:17px;margin-bottom:8px}footer p{font-size:11px;color:#8d9ab8;line-height:1.8}
+.footer-links{margin-top:11px;color:#f9a8d4;font-size:11px}
+@media(max-width:520px){.container{width:calc(100% - 20px)}.header{padding:15px 0}.brand-name{font-size:19px}.hero{padding-top:30px}.generator-card{padding:16px}.form-row{grid-template-columns:1fr;gap:0}.feature-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="header">
+  <div class="brand"><div class="brand-logo">⚡</div><div class="brand-name">Tube<span>Spark</span> AI</div></div>
+  <div class="version">UPGRADED 3.0</div>
+</header>
+
+<section class="hero">
+  <div class="hero-label">✨ SMART YOUTUBE SEO STUDIO</div>
+  <h1>Make Every Video<br><span class="gradient-text">Unforgettable.</span></h1>
+  <p>Get 20 fresh title ideas, engaging descriptions and useful SEO keywords for your next upload.</p>
+</section>
+
+<div class="ad-slot"><div class="ad-label">ADVERTISEMENT</div><div class="ad-text">Advertisement Space</div></div>
+
+<main class="generator-card">
+  <div class="card-heading"><div class="heading-icon">⚡</div><div><h2>Video SEO Generator</h2><p>Tell us about your video. Get fresh ideas every time.</p></div></div>
+
+  <div class="form-group">
+    <label for="topic">Your Video Topic <span>*</span></label>
+    <input id="topic" class="form-control" type="text" maxlength="150" placeholder="Example: I Made a Mini Cooler at Home">
+  </div>
+  <div class="form-group">
+    <label for="details">Tell Us About Your Project</label>
+    <textarea id="details" class="form-control" maxlength="700" placeholder="What did you make? Which materials did you use? What makes it special?"></textarea>
+  </div>
+  <div class="form-row">
+    <div class="form-group"><label for="category">Video Category</label>
+      <select id="category" class="form-control">
+        <option value="DIY Projects">DIY Projects</option><option value="Technology">Technology</option><option value="Gaming">Gaming</option><option value="Education">Education</option><option value="Facts">Facts</option><option value="Entertainment">Entertainment</option><option value="Vlogging">Vlogging</option><option value="Cooking">Cooking</option><option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group"><label for="format">Video Format</label>
+      <select id="format" class="form-control"><option>YouTube Shorts</option><option>YouTube Long Video</option></select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group"><label for="language">Language</label>
+      <select id="language" class="form-control"><option>English</option><option>Hindi</option><option>Hinglish</option></select>
+    </div>
+    <div class="form-group"><label for="style">Title Style</label>
+      <select id="style" class="form-control"><option value="mystery">Mystery & Curiosity</option><option value="viral">Viral & Surprise</option><option value="short">Short & Unique</option><option value="professional">Professional</option><option value="highenergy">High Energy</option></select>
+    </div>
+  </div>
+  <div class="form-group"><label for="audience">Target Audience</label>
+    <select id="audience" class="form-control"><option>Everyone</option><option>DIY Lovers</option><option>Students</option><option>Technology Lovers</option><option>Craft Lovers</option></select>
+  </div>
+
+  <button class="generate-button" id="generateButton" type="button" onclick="generateContent()">⚡ GENERATE 20 TITLES + SEO</button>
+  <p class="secure-note">No account required • Runs in your browser • No API key needed</p>
+
+  <div class="loading-box" id="loadingBox">
+    <div class="loading-icon">⚡</div><h3>Creating Your Ideas</h3><p id="loadingMessage">Finding a fresh angle for your video...</p>
+    <div class="loading-step" id="step1"><span>🔍 Understanding your topic</span><span class="step-status">Waiting</span></div>
+    <div class="loading-step" id="step2"><span>🎯 Finding curiosity angles</span><span class="step-status">Waiting</span></div>
+    <div class="loading-step" id="step3"><span>✍️ Writing 20 title ideas</span><span class="step-status">Waiting</span></div>
+    <div class="loading-step" id="step4"><span>📝 Building your description</span><span class="step-status">Waiting</span></div>
+    <div class="loading-step" id="step5"><span>✨ Preparing SEO keywords</span><span class="step-status">Waiting</span></div>
+    <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div><div class="progress-number" id="progressNumber">0%</div>
+  </div>
+</main>
+
+<div class="ad-slot"><div class="ad-label">ADVERTISEMENT</div><div class="ad-text">Sponsored Content Area</div></div>
+
+<section class="results" id="results">
+  <h2 class="result-heading">🎉 Your Content Is Ready!</h2>
+  <p class="result-subtitle">20 title ideas plus a description and SEO suggestions. Choose the strongest title for your video.</p>
+  <div class="result-card"><div class="result-title"><h3>🎯 20 YouTube Titles</h3></div><div class="result-content" id="titleResult"></div><button class="copy-button" onclick="copyResult('titleResult',this)">📋 COPY ALL TITLES</button></div>
+  <div class="result-card"><div class="result-title"><h3>🏷️ SEO Tags</h3></div><div class="result-content" id="tagResult"></div><button class="copy-button" onclick="copyResult('tagResult',this)">📋 COPY TAGS</button></div>
+  <div class="result-card"><div class="result-title"><h3>📝 Video Description</h3></div><div class="result-content" id="descriptionResult"></div><button class="copy-button" onclick="copyResult('descriptionResult',this)">📋 COPY DESCRIPTION</button></div>
+  <div class="result-card"><div class="result-title"><h3>#️⃣ Five Hashtags</h3></div><div class="result-content" id="hashtagResult"></div><button class="copy-button" onclick="copyResult('hashtagResult',this)">📋 COPY HASHTAGS</button></div>
+  <div class="ad-slot"><div class="ad-label">ADVERTISEMENT</div><div class="ad-text">Sponsored Advertisement</div></div>
+  <button class="reset-button" onclick="resetGenerator()">↻ GENERATE ANOTHER VIDEO</button>
+</section>
+
+<section class="features">
+  <h2>Why Use TubeSpark AI?</h2>
+  <div class="feature-grid">
+    <div class="feature"><div class="feature-icon">🕵️</div><h3>Mystery Titles</h3><p>Curiosity-led ideas that make viewers want to know more.</p></div>
+    <div class="feature"><div class="feature-icon">🔍</div><h3>SEO Tags</h3><p>Topic-based keyword suggestions, not just repeated generic tags.</p></div>
+    <div class="feature"><div class="feature-icon">📝</div><h3>Fresh Descriptions</h3><p>Descriptions shaped around your topic and project details.</p></div>
+    <div class="feature"><div class="feature-icon">📱</div><h3>Mobile Friendly</h3><p>Use the generator on your phone or computer.</p></div>
+  </div>
+</section>
+
+<div class="ad-slot"><div class="ad-label">ADVERTISEMENT</div><div class="ad-text">Advertisement Space</div></div>
+<footer><h3>⚡ TubeSpark AI</h3><p>Create smarter. Make better videos.<br>A simple YouTube content helper.</p><div class="footer-links">Privacy Policy | Contact | About</div><p style="margin-top:12px">© 2026 TubeSpark AI. All rights reserved.</p></footer>
+</div>
+
+<script>
+let loadingTimer = null;
+let previousTitleSet = "";
+
+const titlePatterns = {
+  mystery: [
+    "Nobody Expected This {topic}...",
+    "The Secret Behind This {topic}",
+    "I Tried Making {topic}… Look What Happened",
+    "This Tiny {topic} Has a Big Surprise",
+    "Wait Until You See the Result!",
+    "What Happens If You Make a {topic}?",
+    "The Unexpected Result of My {topic}",
+    "I Turned a Simple Idea Into {topic}",
+    "There's More to This {topic} Than You Think",
+    "Can You Guess What This Becomes?",
+    "The Hidden Trick Behind My {topic}",
+    "This Build Took a Surprising Turn",
+    "I Made It… But Did It Actually Work?",
+    "One Small Idea, One Surprising Build",
+    "The Result Was Not What I Expected",
+    "A Strange Idea That Actually Worked?",
+    "Watch This {topic} Come to Life",
+    "The Most Unexpected Part of This Build",
+    "I Built This at Home. Here's the Twist",
+    "You Won't Guess How I Made This"
+  ],
+  viral: [
+    "I Made {topic} at Home! 🤯","This {topic} Is Surprisingly Cool!","From Simple Materials to {topic}!","I Tried This DIY Idea… WOW!","This Little Build Really Works!","A Simple Idea With an Amazing Result","Can This Homemade {topic} Really Work?","I Tested My Craziest DIY Idea","This Is What I Made Today!","The Result Is Worth the Wait"
+  ],
+  short: [
+    "Mini {topic}","DIY {topic} at Home","Tiny Build, Big Idea","Simple {topic} Project","Made It Myself!","The Mini DIY Build","A Clever Homemade Idea","Small Project, Cool Result","Easy {topic} Build","My Latest Mini Creation"
+  ],
+  professional: [
+    "How to Make {topic} at Home","Easy {topic} | Step-by-Step DIY","A Simple Guide to Making {topic}","Homemade {topic}: Full Project","Creative {category} Project","DIY {topic} Tutorial","Build a {topic} Using Simple Materials","{topic}: Design and Build","Beginner-Friendly {topic} Project","How This Homemade Project Works"
+  ],
+  highenergy: [
+    "I Built {topic} in 5 Minutes!","This Mini Build Is WILD! 🤯","I Had to Try This DIY!","The Craziest Little Build!","Can I Really Make This at Home?","This DIY Turned Out AMAZING!","Wait… I Made THAT?","Tiny Project. Huge Surprise!","I Tested This Crazy Idea!","You Need to See This Build!"
+  ]
+};
+
+const hindiPatterns = [
+  "ऐसा {topic} पहले देखा है?","घर पर बनाया {topic}… नतीजा चौंकाने वाला!","इस छोटे प्रोजेक्ट में छिपा है कमाल","आखिर यह कैसे बना?","मेरा नया DIY प्रयोग!","साधारण चीज़ों से बनाया कमाल","क्या यह घर पर बन सकता है?","अंत तक देखना, नतीजा कमाल है","इस आइडिया का रिजल्ट देखो!","छोटा सा प्रोजेक्ट, बड़ा कमाल","मैंने इसे खुद बनाया!","इस ट्रिक से बना {topic}","यह प्रयोग सफल होगा या नहीं?","एक अनोखा घरेलू प्रोजेक्ट","बनाने का तरीका देखकर हैरान रह जाओगे","इसका असली काम देखकर चौंकोगे","कम सामान में शानदार निर्माण","यह छोटा गैजेट कैसे काम करता है?","मेरे DIY का अनोखा नतीजा","क्या तुम ऐसा बना सकते हो?"
+];
+const hinglishPatterns = [
+  "Aakhir Ye {topic} Kaise Bana?","Is Mini Build Mein Chhupa Hai Twist!","Ghar Par Banaya… Result Dekho!","Ye Idea Sach Mein Kaam Karta Hai?","End Tak Dekhna! 🤯","Simple Cheezon Se Kamaal!","Mera Sabse Unique DIY Idea","Itna Chhota, Itna Useful!","Iska Result Expect Nahi Kiya Tha","5 Minutes Mein Ye Bana Diya!","Ye Homemade Project Dekho!","Kya Ye Ghar Par Ban Sakta Hai?","Ek Chhota Idea, Bada Surprise","Maine Try Kiya… Aur Ye Hua!","Is DIY Ka Secret Kya Hai?","Mini {topic} Ka Amazing Result","Aisa Experiment Pehli Baar!","Ye Trick Kaam Kar Gayi!","Banaya Khud, Result Zabardast!","Tum Guess Kar Sakte Ho?"
+];
+
+function shuffle(array) {
+  const a = [...array];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function cleanSentence(value) {
+  return String(value || "").trim().replace(/\s+/g, " ").replace(/[.]+$/,"");
+}
+function generateTitles(topic, category, language, style, isShort) {
+  let patterns;
+  if (language === "Hindi") patterns = hindiPatterns;
+  else if (language === "Hinglish") patterns = hinglishPatterns;
+  else patterns = titlePatterns[style] || titlePatterns.mystery;
+
+  const topicText = cleanSentence(topic);
+  const categoryText = category;
+  let built = patterns.map(p => p.replaceAll("{topic}", topicText).replaceAll("{category}", categoryText));
+  if (language === "English" && !isShort) {
+    built = built.map(t => t.replace(/5 Minutes?/gi, "A Simple Way").replace(/Shorts/gi, "Video"));
+  }
+  built = [...new Set(built.map(cleanSentence))];
+  let picked = shuffle(built).slice(0, 20);
+  // If the random selection exactly repeats the last set, shuffle again.
+  let signature = picked.join("|");
+  if (signature === previousTitleSet && built.length > 1) {
+    picked = shuffle(built).slice(0, 20);
+    signature = picked.join("|");
+  }
+  previousTitleSet = signature;
+  return picked;
+}
+
+function makeTags(topic, category, audience, details) {
+  const clean = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").trim();
+  const topicWords = clean(topic).split(/\s+/).filter(w => w.length > 1);
+  const detailWords = clean(details).split(/\s+/).filter(w => w.length > 3);
+  const categoryWords = clean(category).split(/\s+/);
+  const tags = [
+    clean(topic), ...topicWords, ...categoryWords, "youtube shorts", "shorts",
+    "how to make", "homemade", "easy diy", "creative project", "mini project",
+    "made at home", clean(audience), ...detailWords.slice(0, 5)
+  ].filter(Boolean);
+  return [...new Set(tags)].slice(0, 25).join(", ");
+}
+
+function makeDescription(topic, details, category, format, language, audience) {
+  const info = cleanSentence(details);
+  const isShort = format === "YouTube Shorts";
+  if (language === "Hindi") {
+    return `आज के ${isShort ? "Shorts वीडियो" : "वीडियो"} में हमने "${topic}" से जुड़ा एक ${category} प्रोजेक्ट दिखाया है।\n\n${info ? "इस प्रोजेक्ट के बारे में: " + info + "\n\n" : ""}वीडियो को अंत तक देखें और इसका पूरा आइडिया जानें। अगर आपको ऐसे क्रिएटिव प्रोजेक्ट पसंद हैं, तो वीडियो को Like करें और नए वीडियो के लिए Subscribe करें।\n\nश्रेणी: ${category}\nदर्शक: ${audience}`;
+  }
+  if (language === "Hinglish") {
+    return `Aaj ke ${isShort ? "Shorts" : "video"} mein humne "${topic}" ka ek interesting ${category} project share kiya hai.\n\n${info ? "Project details: " + info + "\n\n" : ""}Video ko end tak dekho aur iska final result zaroor check karo. Aise hi creative projects ke liye Like, Share aur Subscribe karna na bhoolein!\n\nCategory: ${category}\nFor: ${audience}`;
+  }
+  return `What happens when you try "${topic}"? In this ${category} ${isShort ? "Shorts video" : "video"}, we explore the idea and show the project result.\n\n${info ? "PROJECT DETAILS\n" + info + "\n\n" : ""}Watch until the end to see the outcome. If you enjoy practical ideas, creative builds and simple projects, leave a like and subscribe for more.\n\nCategory: ${category}\nVideo format: ${format}\nMade for: ${audience}\n\nNote: Results may vary depending on materials and how the project is made.`;
+}
+
+function makeHashtags(category) {
+  const map = {
+    "DIY Projects":"#shorts #shortfeed #ytshorts #diy #diyprojects",
+    "Technology":"#shorts #shortfeed #ytshorts #technology #tech",
+    "Gaming":"#shorts #shortfeed #ytshorts #gaming #gameplay",
+    "Education":"#shorts #shortfeed #ytshorts #education #learning",
+    "Facts":"#shorts #shortfeed #ytshorts #facts #amazingfacts",
+    "Cooking":"#shorts #shortfeed #ytshorts #cooking #food",
+    "Vlogging":"#shorts #shortfeed #ytshorts #vlog #dailyvlog",
+    "Entertainment":"#shorts #shortfeed #ytshorts #entertainment #fun",
+    "Other":"#shorts #shortfeed #ytshorts #youtube #creative"
+  };
+  return map[category] || map.Other;
+}
+
+function createContent(topic, details, category, format, language, style, audience) {
+  const titles = generateTitles(topic, category, language, style, format === "YouTube Shorts");
+  return {
+    titles,
+    tags: makeTags(topic, category, audience, details),
+    description: makeDescription(topic, details, category, format, language, audience),
+    hashtags: makeHashtags(category)
+  };
+}
+
+function generateContent() {
+  const topic = document.getElementById("topic").value.trim();
+  const details = document.getElementById("details").value.trim();
+  const category = document.getElementById("category").value;
+  const format = document.getElementById("format").value;
+  const language = document.getElementById("language").value;
+  const style = document.getElementById("style").value;
+  const audience = document.getElementById("audience").value;
+
+  if (!topic) {
+    alert("Please enter your video topic first!");
+    document.getElementById("topic").focus();
+    return;
+  }
+  clearInterval(loadingTimer);
+  document.getElementById("results").classList.remove("show");
+  const button = document.getElementById("generateButton");
+  button.disabled = true;
+  button.textContent = "⏳ GENERATING...";
+  const loading = document.getElementById("loadingBox");
+  loading.classList.add("show");
+
+  let progress = 0;
+  const messages = ["Understanding your topic...","Finding curiosity angles...","Writing 20 title ideas...","Building your description...","Preparing SEO keywords..."];
+  const steps = ["step1","step2","step3","step4","step5"];
+  steps.forEach(id => {
+    const el = document.getElementById(id);
+    el.className = "loading-step";
+    el.querySelector(".step-status").textContent = "Waiting";
+  });
+  document.getElementById("progressBar").style.width = "0%";
+  document.getElementById("progressNumber").textContent = "0%";
+
+  loadingTimer = setInterval(() => {
+    progress = Math.min(progress + 5, 100);
+    document.getElementById("progressBar").style.width = progress + "%";
+    document.getElementById("progressNumber").textContent = progress + "%";
+    const stepIndex = Math.min(Math.floor((progress - 1) / 20), 4);
+    document.getElementById("loadingMessage").textContent = messages[stepIndex];
+    steps.forEach((id,index) => {
+      const step = document.getElementById(id);
+      const status = step.querySelector(".step-status");
+      if (index < stepIndex) { step.className = "loading-step done"; status.textContent = "✓ Done"; }
+      else if (index === stepIndex) { step.className = "loading-step active"; status.textContent = "Working..."; }
+      else { step.className = "loading-step"; status.textContent = "Waiting"; }
+    });
+    if (progress >= 100) {
+      clearInterval(loadingTimer);
+      const output = createContent(topic, details, category, format, language, style, audience);
+      showResults(output);
+      button.disabled = false;
+      button.textContent = "⚡ GENERATE 20 TITLES + SEO";
+    }
+  }, 45);
+}
+
+function showResults(output) {
+  document.getElementById("titleResult").textContent = output.titles.map((title,index) => (index + 1) + ". " + title).join("\n\n");
+  document.getElementById("tagResult").textContent = output.tags;
+  document.getElementById("descriptionResult").textContent = output.description;
+  document.getElementById("hashtagResult").textContent = output.hashtags;
+  document.getElementById("loadingBox").classList.remove("show");
+  document.getElementById("results").classList.add("show");
+  document.getElementById("results").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+async function copyResult(id, button) {
+  const text = document.getElementById(id).textContent;
+  const oldText = button.textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    const area = document.createElement("textarea");
+    area.value = text;
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    area.remove();
+  }
+  button.textContent = "✓ COPIED!";
+  setTimeout(() => button.textContent = oldText, 1600);
+}
+
+function resetGenerator() {
+  clearInterval(loadingTimer);
+  document.getElementById("topic").value = "";
+  document.getElementById("details").value = "";
+  document.getElementById("results").classList.remove("show");
+  document.getElementById("loadingBox").classList.remove("show");
+  const button = document.getElementById("generateButton");
+  button.disabled = false;
+  button.textContent = "⚡ GENERATE 20 TITLES + SEO";
+  document.getElementById("topic").focus();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
