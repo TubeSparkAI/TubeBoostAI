@@ -1,1 +1,556 @@
-# TubeBoostAI
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TubeBoost AI - YouTube Creator Tools</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:Arial,sans-serif;
+ background:#0b0d18;color:white;
+}
+header{
+ padding:18px 20px;
+ display:flex;justify-content:space-between;
+ align-items:center;background:#121528;
+ border-bottom:1px solid #292d48;
+ position:sticky;top:0;z-index:10;
+}
+.logo{font-size:22px;font-weight:bold;color:#a78bfa}
+.logo span{color:white}
+.menu{
+ display:flex;gap:8px;overflow-x:auto;
+ padding:12px;background:#111426;
+}
+.menu button{
+ white-space:nowrap;background:#222640;
+ border:0;color:white;padding:11px 15px;
+ border-radius:9px;cursor:pointer;
+}
+.menu button.active{background:#7954e8}
+main{max-width:950px;margin:auto;padding:20px}
+.hero{text-align:center;padding:35px 10px}
+.hero h1{font-size:32px;margin-bottom:12px}
+.hero h1 span{color:#a78bfa}
+.hero p{color:#aeb3cc;line-height:1.6}
+.card{
+ background:#15192d;padding:20px;
+ border:1px solid #292e4c;
+ border-radius:16px;margin:16px 0;
+}
+h2{font-size:21px;margin-bottom:15px}
+h3{margin:15px 0 8px}
+label{display:block;margin:12px 0 7px;color:#c9cbe0}
+input,textarea,select{
+ width:100%;padding:13px;
+ background:#0d1020;color:white;
+ border:1px solid #343957;
+ border-radius:9px;font-size:15px;
+ outline:none;
+}
+textarea{min-height:100px;resize:vertical}
+.btn{
+ background:linear-gradient(100deg,#7954e8,#a855f7);
+ border:0;color:white;padding:13px 18px;
+ border-radius:9px;font-weight:bold;
+ cursor:pointer;margin-top:12px;
+}
+.btn.secondary{background:#292e49}
+.btn.red{background:#e44762}
+button:active{transform:scale(.98)}
+.result{
+ background:#0c1020;padding:14px;
+ border-radius:10px;margin-top:12px;
+ border:1px solid #343957;
+ line-height:1.6;overflow-wrap:anywhere;
+}
+.result button{margin-right:5px}
+.tool{display:none}
+.tool.active{display:block}
+.small{font-size:12px;color:#9299b9;margin-top:10px}
+.tag{
+ display:inline-block;background:#343057;
+ padding:7px 10px;border-radius:7px;
+ margin:4px;font-size:13px;
+}
+.score{
+ font-size:55px;font-weight:bold;
+ color:#a78bfa;text-align:center;
+ margin:15px;
+}
+.bar{height:12px;background:#30344d;border-radius:20px;overflow:hidden}
+.bar div{height:100%;width:0;background:#a78bfa}
+canvas{width:100%;max-width:600px;display:block;margin:15px auto;border-radius:8px;background:#222}
+footer{text-align:center;padding:25px;color:#8189a7}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">TubeBoost <span>AI 🚀</span></div>
+ <span style="font-size:12px;color:#a78bfa">CREATOR TOOLS</span>
+</header>
+
+<div class="menu">
+ <button class="active" onclick="showTool('home',this)">Home</button>
+ <button onclick="showTool('titles',this)">Titles</button>
+ <button onclick="showTool('description',this)">Description</button>
+ <button onclick="showTool('tags',this)">Tags</button>
+ <button onclick="showTool('thumbnail',this)">Thumbnail</button>
+ <button onclick="showTool('tester',this)">Title Tester</button>
+ <button onclick="showTool('seo',this)">SEO</button>
+</div>
+
+<main>
+
+<section id="home" class="tool active">
+ <div class="hero">
+  <h1>Grow Your YouTube <span>Channel 🚀</span></h1>
+  <p>Create catchy titles, descriptions, tags and thumbnails with your YouTube creator toolkit.</p>
+ </div>
+
+ <div class="card">
+  <h2>✨ All Creator Tools</h2>
+  <p>🎯 AI Title Generator</p><br>
+  <p>📝 Description Generator</p><br>
+  <p>🏷️ Tags Generator</p><br>
+  <p>🖼️ Thumbnail Generator</p><br>
+  <p>📊 Viral Title Tester</p><br>
+  <p>🔎 SEO Analyzer</p>
+ </div>
+ <div class="card">
+  <h2>Start Creating!</h2>
+  <button class="btn" onclick="showTool('titles')">Generate Titles →</button>
+  <button class="btn secondary" onclick="showTool('tester')">Test My Title →</button>
+ </div>
+</section>
+
+<!-- TITLE GENERATOR -->
+<section id="titles" class="tool">
+ <div class="card">
+  <h2>🎯 YouTube Title Generator</h2>
+  <label>What is your video about?</label>
+  <input id="topic" placeholder="Example: Mini Cooler at Home">
+
+  <label>Video Category</label>
+  <select id="category">
+   <option>DIY</option>
+   <option>Gaming</option>
+   <option>Technology</option>
+   <option>Education</option>
+   <option>Facts</option>
+   <option>Vlogs</option>
+   <option>Entertainment</option>
+   <option>Science</option>
+  </select>
+
+  <button class="btn" onclick="generateTitles()">✨ Generate 10 Titles</button>
+  <div id="titleResults"></div>
+  <button class="btn secondary" onclick="generateTitles()">🔄 Generate More New Titles</button>
+ </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section id="description" class="tool">
+ <div class="card">
+  <h2>📝 Description Generator</h2>
+  <label>Video Title</label>
+  <input id="descTitle" placeholder="Enter your video title">
+
+  <label>Video Topic</label>
+  <input id="descTopic" placeholder="What is your video about?">
+
+  <button class="btn" onclick="generateDescription()">Generate Description</button>
+  <div id="descriptionResult" class="result" style="display:none"></div>
+  <button class="btn secondary" onclick="copyText('descriptionResult')">Copy Description</button>
+ </div>
+</section>
+
+<!-- TAGS -->
+<section id="tags" class="tool">
+ <div class="card">
+  <h2>🏷️ YouTube Tags Generator</h2>
+  <label>Enter Video Topic</label>
+  <input id="tagTopic" placeholder="Example: Mini Fan DIY">
+
+  <button class="btn" onclick="generateTags()">Generate Tags</button>
+  <div id="tagResults" class="result"></div>
+  <button class="btn secondary" onclick="copyText('tagResults')">Copy All Tags</button>
+ </div>
+</section>
+
+<!-- THUMBNAIL -->
+<section id="thumbnail" class="tool">
+ <div class="card">
+  <h2>🖼️ Thumbnail Maker</h2>
+  <p class="small">Upload your own photo and create a simple YouTube thumbnail.</p>
+
+  <label>Upload Photo</label>
+  <input type="file" id="photo" accept="image/*">
+
+  <label>Thumbnail Text</label>
+  <input id="thumbText" placeholder="AMAZING DIY PROJECT!">
+
+  <label>Text Color</label>
+  <select id="thumbColor">
+   <option value="#ffffff">White</option>
+   <option value="#ffff00">Yellow</option>
+   <option value="#ff3333">Red</option>
+  </select>
+
+  <button class="btn" onclick="makeThumbnail()">Create Thumbnail</button>
+  <canvas id="thumbCanvas" width="1280" height="720"></canvas>
+  <button class="btn secondary" onclick="downloadThumbnail()">⬇ Download Thumbnail</button>
+ </div>
+</section>
+
+<!-- TITLE TESTER -->
+<section id="tester" class="tool">
+ <div class="card">
+  <h2>📊 Viral Title Tester</h2>
+  <label>Enter Your YouTube Title</label>
+  <input id="testTitle" placeholder="I Built a Mini Cooler at Home!">
+
+  <button class="btn" onclick="testTitle()">Analyze My Title</button>
+
+  <div id="testResults" style="display:none">
+   <div class="score" id="score">0%</div>
+   <div class="bar"><div id="scoreBar"></div></div>
+   <h3 id="scoreText"></h3>
+   <div id="analysis" class="result"></div>
+   <h3>Improved Title Ideas</h3>
+   <div id="improvements"></div>
+  </div>
+  <p class="small">Note: This is an algorithmic estimate, not a prediction of actual views or guaranteed virality.</p>
+ </div>
+</section>
+
+<!-- SEO -->
+<section id="seo" class="tool">
+ <div class="card">
+  <h2>🔎 YouTube SEO Analyzer</h2>
+  <label>Enter Video Title</label>
+  <input id="seoTitle" placeholder="Your YouTube video title">
+
+  <label>Enter Main Keyword</label>
+  <input id="seoKeyword" placeholder="Example: Mini Cooler">
+
+  <button class="btn" onclick="analyzeSEO()">Analyze SEO</button>
+  <div id="seoResult" class="result"></div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ TubeBoost AI © 2026<br>
+ <span class="small">Create Better. Grow Smarter. 🚀</span>
+</footer>
+
+<script>
+
+// NAVIGATION
+function showTool(id,btn){
+ document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.menu button').forEach(x=>x.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ window.scrollTo(0,0);
+}
+
+// RANDOM FUNCTIONS
+function pick(arr){
+ return arr[Math.floor(Math.random()*arr.length)];
+}
+function shuffle(arr){
+ return [...arr].sort(()=>Math.random()-.5);
+}
+function cleanTopic(id){
+ return document.getElementById(id).value.trim();
+}
+
+// UNIQUE TITLE GENERATOR
+const titleHistory = new Set();
+
+const titlePatterns = [
+ t=>`I Built ${t} at Home! 🤯`,
+ t=>`Can This ${t} Actually Work?`,
+ t=>`I Made a MINI ${t} in 5 Minutes!`,
+ t=>`Nobody Expected This ${t}! 🔥`,
+ t=>`This ${t} Is AMAZING!`,
+ t=>`I Tried Making ${t} at Home!`,
+ t=>`DIY ${t} – So Easy!`,
+ t=>`The Smartest ${t} Idea Ever!`,
+ t=>`I Created My Own ${t}!`,
+ t=>`You Won't Believe This ${t}!`,
+ t=>`Making ${t} From Scratch!`,
+ t=>`This Homemade ${t} Is Genius!`,
+ t=>`Only 5 Minutes to Make ${t}!`,
+ t=>`My Craziest ${t} Experiment!`,
+ t=>`Turning an Idea Into ${t}!`,
+ t=>`Is This the Best ${t} Ever?`,
+ t=>`Amazing Homemade ${t}!`,
+ t=>`I Tested My Own ${t}!`,
+ t=>`This DIY ${t} Actually Works!`,
+ t=>`The Ultimate Mini ${t}!`,
+ t=>`Simple Idea, Amazing ${t}!`,
+ t=>`Wait Until You See This ${t}!`,
+ t=>`From Nothing to ${t}!`,
+ t=>`Making a Crazy ${t} at Home!`
+];
+
+function generateTitles(){
+ const topic=cleanTopic('topic');
+ if(!topic){alert('Please enter your video topic!');return;}
+
+ let output=[];
+ let attempts=0;
+
+ while(output.length<10 && attempts<500){
+  attempts++;
+  let title=pick(titlePatterns)(topic);
+  if(!titleHistory.has(title)){
+   titleHistory.add(title);
+   output.push(title);
+  }
+ }
+
+ if(output.length===0){
+  titleHistory.clear();
+  generateTitles();
+  return;
+ }
+
+ document.getElementById('titleResults').innerHTML=
+ output.map((t,i)=>`
+ <div class="result">
+ <b>${i+1}. ${escapeHTML(t)}</b><br>
+ <button class="btn secondary" onclick="copyOne(this)">Copy</button>
+ </div>`).join('');
+}
+
+// SAFE HTML
+function escapeHTML(s){
+ return s.replace(/[&<>"']/g,c=>({
+ '&':'&amp;','<':'&lt;','>':'&gt;',
+ '"':'&quot;',"'":'&#39;'
+ }[c]));
+}
+
+// COPY
+function copyOne(btn){
+ let text=btn.parentElement.querySelector('b').innerText;
+ navigator.clipboard.writeText(text).then(()=>alert('Copied!'));
+}
+function copyText(id){
+ let el=document.getElementById(id);
+ let text=el.innerText;
+ navigator.clipboard.writeText(text).then(()=>alert('Copied!'));
+}
+
+// DESCRIPTION GENERATOR
+function generateDescription(){
+ let title=cleanTopic('descTitle');
+ let topic=cleanTopic('descTopic');
+ if(!title||!topic){alert('Enter title and topic!');return;}
+
+ let intro=pick([
+  `Today I am sharing an amazing project about ${topic}.`,
+  `Welcome back! Today we are creating something interesting: ${topic}.`,
+  `Watch this creative experiment where I make ${topic}!`,
+  `Here is a fun and simple project about ${topic}.`
+ ]);
+
+ let ending=pick([
+  'Like the video and subscribe for more creative projects!',
+  'Share your thoughts in the comments and subscribe!',
+  'Thanks for watching! Stay tuned for more amazing videos!'
+ ]);
+
+ let desc=`${title}
+
+${intro}
+
+In this video, you will discover a creative way to make and explore ${topic}.
+
+If you enjoy DIY projects, homemade inventions and creative experiments, this video is for you!
+
+${ending}
+
+#Shorts #YouTubeShorts #DIY #Creative #Trending`;
+
+ let box=document.getElementById('descriptionResult');
+ box.style.display='block';
+ box.innerText=desc;
+}
+
+// TAG GENERATOR
+function generateTags(){
+ let topic=cleanTopic('tagTopic');
+ if(!topic){alert('Enter your video topic!');return;}
+
+ let base=[
+  topic,topic+' DIY','how to make '+topic,
+  'homemade '+topic,'DIY projects',
+  'creative experiments','homemade inventions',
+  'easy DIY','mini projects',
+  'amazing DIY','creative ideas',
+  'YouTube Shorts','shorts video',
+  'how to make at home','unique inventions',
+  topic+' tutorial',topic+' at home'
+ ];
+
+ let tags=[...new Set(base.map(x=>x.toLowerCase()))];
+
+ document.getElementById('tagResults').innerHTML=
+ shuffle(tags).slice(0,15).map(x=>
+ `<span class="tag">${escapeHTML(x)}</span>`
+ ).join('');
+}
+
+// THUMBNAIL MAKER
+let uploadedImage=null;
+let canvas=document.getElementById('thumbCanvas');
+let ctx=canvas.getContext('2d');
+
+document.getElementById('photo').addEventListener('change',function(e){
+ let file=e.target.files[0];
+ if(!file)return;
+ let img=new Image();
+ img.onload=()=>{
+  uploadedImage=img;
+  makeThumbnail();
+ };
+ img.src=URL.createObjectURL(file);
+});
+
+function makeThumbnail(){
+ if(!uploadedImage){
+  alert('Please upload a photo first!');
+  return;
+ }
+
+ ctx.fillStyle='#111';
+ ctx.fillRect(0,0,1280,720);
+
+ let ratio=Math.max(1280/uploadedImage.width,720/uploadedImage.height);
+ let w=uploadedImage.width*ratio;
+ let h=uploadedImage.height*ratio;
+ ctx.drawImage(uploadedImage,(1280-w)/2,(720-h)/2,w,h);
+
+ let text=document.getElementById('thumbText').value||'AMAZING DIY!';
+ let color=document.getElementById('thumbColor').value;
+
+ ctx.fillStyle='rgba(0,0,0,.48)';
+ ctx.fillRect(0,530,1280,190);
+
+ ctx.font='bold 76px Arial';
+ ctx.textAlign='center';
+ ctx.textBaseline='middle';
+ ctx.lineWidth=12;
+ ctx.strokeStyle='#000';
+ ctx.strokeText(text.toUpperCase(),640,620,1150);
+ ctx.fillStyle=color;
+ ctx.fillText(text.toUpperCase(),640,620,1150);
+}
+
+function downloadThumbnail(){
+ if(!uploadedImage){alert('Create a thumbnail first!');return;}
+ let link=document.createElement('a');
+ link.download='TubeBoost-Thumbnail.png';
+ link.href=canvas.toDataURL('image/png');
+ link.click();
+}
+
+// TITLE TESTER
+function testTitle(){
+ let title=cleanTopic('testTitle');
+ if(!title){alert('Enter a title first!');return;}
+
+ let score=35;
+ let lower=title.toLowerCase();
+ let words=title.trim().split(/\s+/);
+
+ let curiosity=['secret','believe','unexpected','nobody','crazy','amazing','wait','surprise'];
+ let emotion=['amazing','shocking','crazy','unbelievable','incredible','🤯','🔥','😱'];
+ let keywords=['how','make','diy','homemade','tutorial','build','review','best'];
+
+ let checks=[];
+
+ if(words.length>=4&&words.length<=12){score+=15;checks.push('✓ Good title length');}
+ else checks.push('Try keeping your title around 4–12 words.');
+
+ if(curiosity.some(x=>lower.includes(x))){score+=12;checks.push('✓ Curiosity element found');}
+ else checks.push('Consider adding a genuine curiosity element.');
+
+ if(emotion.some(x=>lower.includes(x))){score+=10;checks.push('✓ Emotional appeal found');}
+ else checks.push('Add an emotional word if it fits your video.');
+
+ if(keywords.some(x=>lower.includes(x))){score+=12;checks.push('✓ Relevant content keyword found');}
+ else checks.push('Use a clear topic keyword.');
+
+ if(title.length>=20&&title.length<=65){score+=10;checks.push('✓ Good character length');}
+ else checks.push('Try making the title clearer and more concise.');
+
+ if(/[!?]/.test(title)){score+=5;checks.push('✓ Punctuation adds emphasis');}
+
+ if(words.length>15){score-=12;checks.push('Title may be too long.');}
+
+ score=Math.max(0,Math.min(100,score));
+
+ document.getElementById('testResults').style.display='block';
+ document.getElementById('score').innerText=score+'%';
+ document.getElementById('scoreBar').style.width=score+'%';
+
+ document.getElementById('scoreText').innerText=
+ score>=80?'Strong Title Potential! 🚀':
+ score>=60?'Good Title – Can Improve!':
+ 'Needs Improvement – Try Again!';
+
+ document.getElementById('analysis').innerHTML=
+ checks.map(x=>'<p>'+escapeHTML(x)+'</p>').join('');
+
+ let improved=[
+  `I Tried ${title}... Here's What Happened!`,
+  `You Won't Believe This: ${title}`,
+  `The Amazing Way to ${title}`
+ ];
+
+ document.getElementById('improvements').innerHTML=
+ improved.map(t=>`<div class="result">${escapeHTML(t)}
+ <button class="btn secondary" onclick="copyOne(this)">Copy</button>
+ <b style="display:none">${escapeHTML(t)}</b></div>`).join('');
+}
+
+// SEO ANALYZER
+function analyzeSEO(){
+ let title=cleanTopic('seoTitle');
+ let keyword=cleanTopic('seoKeyword');
+
+ if(!title||!keyword){alert('Enter title and keyword!');return;}
+
+ let match=title.toLowerCase().includes(keyword.toLowerCase());
+
+ let suggestions=[
+  match?'✓ Main keyword is present in title.':'Add your main keyword naturally to your title.',
+  'Use the main keyword naturally in the first lines of your description.',
+  'Create a clear and attractive thumbnail.',
+  'Use only relevant tags and hashtags.',
+  'Make sure your video delivers what the title promises.'
+ ];
+
+ document.getElementById('seoResult').innerHTML=
+ `<h3>SEO Analysis</h3>
+ <p>Keyword: ${escapeHTML(keyword)}</p><br>
+ ${suggestions.map(x=>'<p>'+escapeHTML(x)+'</p><br>').join('')}
+ <p class="small">These are general SEO suggestions, not an official YouTube ranking score.</p>`;
+}
+
+</script>
+</body>
+</html>
+
