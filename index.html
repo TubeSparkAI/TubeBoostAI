@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,475 +11,1125 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7726599912401696"
      crossorigin="anonymous"></script>
 
-<title>TubeBoost AI - YouTube Creator Tools</title>
-<meta name="description" content="TubeBoost AI offers free YouTube title, description, tags, thumbnail and SEO tools to help creators improve their videos.">
+<title>Violet Studio | Title, Description & Thumbnail Generator</title>
+<meta name="description" content="Violet Studio is a free tool to generate short unique titles, SEO descriptions and thumbnails with your own photo for YouTube, Instagram and blogs.">
 <meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#0b0d18;color:white}
-header{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;background:#121528;border-bottom:1px solid #292d48;position:sticky;top:0;z-index:10}
-.logo{font-size:22px;font-weight:bold;color:#a78bfa}
-.logo span{color:white}
-.menu{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#111426}
-.menu button{white-space:nowrap;background:#222640;border:0;color:white;padding:11px 15px;border-radius:9px;cursor:pointer}
-.menu button.active{background:#7954e8}
-main{max-width:950px;margin:auto;padding:20px}
-.hero{text-align:center;padding:35px 10px}
-.hero h1{font-size:32px;margin-bottom:12px}
-.hero h1 span{color:#a78bfa}
-.hero p{color:#aeb3cc;line-height:1.6}
-.card{background:#15192d;padding:20px;border:1px solid #292e4c;border-radius:16px;margin:16px 0}
-h2{font-size:21px;margin-bottom:15px}
-h3{margin:15px 0 8px}
-label{display:block;margin:12px 0 7px;color:#c9cbe0}
-input,textarea,select{width:100%;padding:13px;background:#0d1020;color:white;border:1px solid #343957;border-radius:9px;font-size:15px;outline:none}
-textarea{min-height:100px;resize:vertical}
-.btn{background:linear-gradient(100deg,#7954e8,#a855f7);border:0;color:white;padding:13px 18px;border-radius:9px;font-weight:bold;cursor:pointer;margin-top:12px}
-.btn.secondary{background:#292e49}
-.btn.red{background:#e44762}
-button:active{transform:scale(.98)}
-.result{background:#0c1020;padding:14px;border-radius:10px;margin-top:12px;border:1px solid #343957;line-height:1.6;overflow-wrap:anywhere}
-.result button{margin-right:5px}
-.tool{display:none}
-.tool.active{display:block}
-.small{font-size:12px;color:#9299b9;margin-top:10px}
-.tag{display:inline-block;background:#343057;padding:7px 10px;border-radius:7px;margin:4px;font-size:13px}
-.score{font-size:55px;font-weight:bold;color:#a78bfa;text-align:center;margin:15px}
-.bar{height:12px;background:#30344d;border-radius:20px;overflow:hidden}
-.bar div{height:100%;width:0;background:#a78bfa}
-canvas{width:100%;max-width:600px;display:block;margin:15px auto;border-radius:8px;background:#222}
-footer{text-align:center;padding:25px;color:#8189a7}
+:root{
+  --bg:#101016;
+  --bg2:#17171f;
+  --card:#1b1b25;
+  --line:rgba(139,123,255,.20);
+  --p1:#6d5dfc;      /* violet */
+  --p2:#8f7bff;      /* light violet */
+  --p3:#4f8cff;      /* blue */
+  --p4:#b79cff;      /* soft purple */
+  --text:#e7e7f0;
+  --muted:#8e8fa3;
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(1000px 500px at 85% -10%,rgba(109,93,252,.14),transparent 60%),
+    radial-gradient(800px 500px at -10% 35%,rgba(79,140,255,.10),transparent 60%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-.3px}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin:auto}
+.grad-text{
+  background:linear-gradient(120deg,var(--p3),var(--p1),var(--p4),var(--p3));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% auto;animation:shine 7s linear infinite;
+}
+@keyframes shine{to{background-position:200% center}}
+
+/* NAV */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(16,16,22,.78);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;display:flex;align-items:center;gap:10px}
+.logo i{
+  width:30px;height:30px;border-radius:9px;
+  background:linear-gradient(135deg,var(--p3),var(--p1));
+  display:inline-block;box-shadow:0 0 18px rgba(109,93,252,.45);
+}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;color:var(--muted)}
+nav ul a{transition:.3s;position:relative}
+nav ul a:hover{color:var(--p4)}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--p1);transition:.3s;border-radius:2px}
+nav ul a:hover::after{width:100%}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;border-radius:12px;border:1px solid transparent;
+  background:linear-gradient(135deg,var(--p3),var(--p1));
+  color:#fff;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit;
+  transition:.3s;
+  box-shadow:0 8px 26px rgba(109,93,252,.28);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(109,93,252,.45)}
+.btn.ghost{background:transparent;color:var(--p4);border-color:var(--line);box-shadow:none}
+.btn.ghost:hover{background:rgba(139,123,255,.10)}
+.btn.small{padding:8px 16px;font-size:12px;border-radius:10px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--p4);padding:8px 12px;border-radius:10px;cursor:pointer;font-size:18px}
+
+/* HERO */
+.hero{padding:85px 0 55px;text-align:center}
+.badge{
+  display:inline-block;padding:7px 18px;border:1px solid var(--line);border-radius:50px;
+  font-size:12px;letter-spacing:2px;color:var(--p4);text-transform:uppercase;margin-bottom:24px;
+  background:rgba(109,93,252,.08);
+}
+.hero h1{font-size:clamp(36px,6.2vw,74px);line-height:1.1;margin-bottom:20px}
+.hero p{max-width:660px;margin:0 auto 34px;color:var(--muted);font-size:17px;font-weight:300}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.stats{display:flex;justify-content:center;gap:60px;margin-top:56px;flex-wrap:wrap}
+.stat b{font-family:'Poppins',sans-serif;font-size:38px;color:var(--p2);display:block}
+.stat span{font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+
+/* ADS */
+.ad-wrap{margin:30px auto;text-align:center}
+.ad-label{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.ad-slot{
+  border:1px dashed rgba(139,123,255,.35);
+  background:repeating-linear-gradient(45deg,rgba(139,123,255,.04),rgba(139,123,255,.04) 12px,transparent 12px,transparent 24px);
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  color:var(--p2);font-size:13px;letter-spacing:1px;margin:auto;
+}
+.ad-728{width:min(728px,100%);height:90px}
+.ad-300{width:100%;max-width:300px;height:250px}
+.ad-res{width:100%;height:120px}
+.ad-tall{width:100%;max-width:300px;min-height:600px}
+
+/* SECTIONS */
+section{padding:66px 0}
+.sec-head{text-align:center;margin-bottom:44px}
+.sec-head h2{font-size:clamp(28px,4vw,44px)}
+.sec-head p{color:var(--muted);max-width:560px;margin:10px auto 0;font-weight:300}
+.line{width:64px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--p3),var(--p1));margin:14px auto}
+
+/* TOOL */
+.tool-grid{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start}
+.panel{
+  background:linear-gradient(160deg,var(--card),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+  box-shadow:0 18px 50px rgba(0,0,0,.4);
+}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.tab{
+  padding:10px 20px;border-radius:12px;border:1px solid var(--line);
+  background:transparent;color:var(--muted);cursor:pointer;font-size:14px;transition:.3s;font-family:inherit;
+}
+.tab.active,.tab:hover{color:#fff;background:linear-gradient(135deg,var(--p3),var(--p1));border-color:transparent}
+.tab-content{display:none;animation:fade .5s}
+.tab-content.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+label{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--p4);margin:16px 0 7px}
+input,select,textarea{
+  width:100%;padding:13px 15px;background:#12121a;border:1px solid rgba(139,123,255,.22);
+  color:var(--text);border-radius:12px;font-family:inherit;font-size:15px;outline:none;transition:.3s;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--p1);box-shadow:0 0 0 3px rgba(109,93,252,.16)}
+input[type=range]{padding:0;height:6px;accent-color:var(--p1);margin-top:12px}
+input[type=file]{font-size:13px;padding:10px}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.hint{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* RESULTS */
+.results{margin-top:26px;display:grid;gap:12px}
+.result{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:15px 18px;border:1px solid rgba(139,123,255,.18);border-radius:14px;background:rgba(109,93,252,.06);
+  transition:.3s;animation:fade .4s;
+}
+.result:hover{border-color:var(--p1);transform:translateX(4px)}
+.result p{font-size:17px;font-weight:600;font-family:'Poppins',sans-serif}
+.result small{color:var(--muted);display:block;margin-top:4px;font-size:12px}
+.desc-box{
+  margin-top:24px;padding:22px;border:1px solid var(--line);border-radius:14px;background:#12121a;
+  white-space:pre-wrap;font-size:15px;color:var(--text);min-height:120px;
+}
+canvas{width:100%;border-radius:14px;border:1px solid var(--line);margin-top:22px;background:#000;box-shadow:0 18px 44px rgba(0,0,0,.55)}
+.swatches{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.sw{width:36px;height:36px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.3s}
+.sw.active,.sw:hover{border-color:#fff;transform:scale(1.12)}
+.photo-box{
+  margin-top:20px;padding:20px;border:1px dashed rgba(139,123,255,.4);border-radius:14px;background:rgba(109,93,252,.05);
+}
+.photo-box h4{font-family:'Poppins',sans-serif;font-size:16px;color:var(--p2);margin-bottom:2px}
+
+/* SIDEBAR */
+.side{display:grid;gap:20px;position:sticky;top:92px}
+.side .panel{padding:20px;text-align:center}
+
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.feature{
+  padding:30px 24px;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(160deg,var(--card),var(--bg2));transition:.35s;
+}
+.feature:hover{transform:translateY(-6px);border-color:var(--p1);box-shadow:0 20px 44px rgba(109,93,252,.14)}
+.feature .ic{font-size:28px;margin-bottom:14px;display:inline-block;width:58px;height:58px;line-height:58px;text-align:center;border-radius:16px;border:1px solid var(--line);background:rgba(109,93,252,.10)}
+.feature h3{font-size:20px;margin-bottom:8px;color:var(--p4)}
+.feature p{color:var(--muted);font-size:14.5px}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;counter-reset:s}
+.step{text-align:center;padding:24px;counter-increment:s}
+.step::before{
+  content:counter(s);display:grid;place-items:center;width:54px;height:54px;margin:0 auto 14px;border-radius:16px;
+  font-family:'Poppins',sans-serif;font-size:24px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,var(--p3),var(--p1));
+  box-shadow:0 0 24px rgba(109,93,252,.3);
+}
+.step h3{font-size:19px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:14px}
+
+/* TIPS */
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.tip{padding:26px;border-left:3px solid var(--p1);background:rgba(109,93,252,.06);border-radius:0 var(--radius) var(--radius) 0}
+.tip h3{font-size:19px;margin-bottom:8px}
+.tip p{color:var(--muted);font-size:14.5px}
+
+/* FAQ */
+.faq{max-width:820px;margin:auto}
+.q{border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden;background:var(--card)}
+.q button{
+  width:100%;text-align:left;padding:18px 22px;background:none;border:none;color:var(--text);
+  font-family:'Poppins',sans-serif;font-size:16px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+}
+.q button span{color:var(--p2);font-size:24px;transition:.3s}
+.q.open button span{transform:rotate(45deg)}
+.a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);padding:0 22px;font-size:15px}
+.q.open .a{padding-bottom:18px}
+
+/* OWNER */
+.owner{
+  text-align:center;padding:56px 28px;border:1px solid var(--line);border-radius:24px;
+  background:radial-gradient(600px 300px at 50% 0,rgba(109,93,252,.16),transparent 70%),var(--card);
+}
+.owner h2{font-size:clamp(26px,3.6vw,40px);margin-bottom:6px}
+.owner .name{font-size:18px;color:var(--p4);font-weight:500}
+.owner p{color:var(--muted);margin:14px auto 24px;max-width:520px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;background:#0b0b10}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.foot h4{font-family:'Poppins',sans-serif;font-size:17px;color:var(--p4);margin-bottom:14px}
+.foot p,.foot li{color:var(--muted);font-size:14px;list-style:none;margin-bottom:8px}
+.foot a:hover{color:var(--p2)}
+.copy{text-align:center;color:var(--muted);font-size:13px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(139,123,255,.12)}
+
+/* TOAST */
+#toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120px);
+  background:linear-gradient(135deg,var(--p3),var(--p1));color:#fff;
+  padding:12px 26px;border-radius:12px;font-weight:600;font-size:14px;transition:.4s;z-index:99;
+}
+#toast.show{transform:translateX(-50%) translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .tool-grid{grid-template-columns:1fr}
+  .side{position:static}
+  .foot{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:#12121a;flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid var(--line)}
+  nav ul.open{display:flex}
+  .menu-btn{display:block}
+  nav .btn.nav-cta{display:none}
+  .row,.row3{grid-template-columns:1fr}
+  .stats{gap:30px}
+}
 </style>
 </head>
-
 <body>
 
+<!-- HEADER -->
 <header>
- <div class="logo">TubeBoost <span>AI 🚀</span></div>
- <span style="font-size:12px;color:#a78bfa">CREATOR TOOLS</span>
+  <div class="container nav">
+    <a href="#top" class="logo"><i></i><span class="grad-text">Violet Studio</span></a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#tool">Generator</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#tips">Growth Tips</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#tool" class="btn nav-cta small">Start Creating</a>
+    <button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  </div>
 </header>
 
-<div class="menu">
- <button class="active" onclick="showTool('home',this)">Home</button>
- <button onclick="showTool('titles',this)">Titles</button>
- <button onclick="showTool('description',this)">Description</button>
- <button onclick="showTool('tags',this)">Tags</button>
- <button onclick="showTool('thumbnail',this)">Thumbnail</button>
- <button onclick="showTool('tester',this)">Title Tester</button>
- <button onclick="showTool('seo',this)">SEO</button>
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="container">
+    <span class="badge">Free Creator Toolkit</span>
+    <h1>Short Titles. <span class="grad-text">Smart Thumbnails.</span></h1>
+    <p>Generate short, unique titles with emoji and hashtag, SEO-ready descriptions, and eye-catching thumbnails with your own photo. All in one clean workspace.</p>
+    <div class="hero-actions">
+      <a href="#tool" class="btn">Open the Generator →</a>
+      <a href="#features" class="btn ghost">Explore Features</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="250000">0</b><span>Titles Created</span></div>
+      <div class="stat"><b data-count="98">0</b><span>% Happy Creators</span></div>
+      <div class="stat"><b data-count="40">0</b><span>Thumbnail Themes</span></div>
+    </div>
+  </div>
 </div>
 
-<main>
-
-<section id="home" class="tool active">
- <div class="hero">
-  <h1>Grow Your YouTube <span>Channel 🚀</span></h1>
-  <p>Create catchy titles, descriptions, tags and thumbnails with your YouTube creator toolkit.</p>
- </div>
- <div class="card">
-  <h2>✨ All Creator Tools</h2>
-  <p>🎯 AI Title Generator</p><br>
-  <p>📝 Description Generator</p><br>
-  <p>🏷️ Tags Generator</p><br>
-  <p>🖼️ Thumbnail Generator</p><br>
-  <p>📊 Viral Title Tester</p><br>
-  <p>🔎 SEO Analyzer</p>
- </div>
- <div class="card">
-  <h2>Start Creating!</h2>
-  <button class="btn" onclick="showTool('titles')">Generate Titles →</button>
-  <button class="btn secondary" onclick="showTool('tester')">Test My Title →</button>
- </div>
-</section>
-
-<section id="titles" class="tool">
- <div class="card">
-  <h2>🎯 YouTube Title Generator</h2>
-  <label>What is your video about?</label>
-  <input id="topic" placeholder="Example: Mini Cooler at Home">
-  <label>Video Category</label>
-  <select id="category">
-   <option>DIY</option><option>Gaming</option>
-   <option>Technology</option><option>Education</option>
-   <option>Facts</option><option>Vlogs</option>
-   <option>Entertainment</option><option>Science</option>
-  </select>
-  <button class="btn" onclick="generateTitles()">✨ Generate 10 Titles</button>
-  <div id="titleResults"></div>
-  <button class="btn secondary" onclick="generateTitles()">🔄 Generate More New Titles</button>
- </div>
-</section>
-
-<section id="description" class="tool">
- <div class="card">
-  <h2>📝 Description Generator</h2>
-  <label>Video Title</label>
-  <input id="descTitle" placeholder="Enter your video title">
-  <label>Video Topic</label>
-  <input id="descTopic" placeholder="What is your video about?">
-  <button class="btn" onclick="generateDescription()">Generate Description</button>
-  <div id="descriptionResult" class="result" style="display:none"></div>
-  <button class="btn secondary" onclick="copyText('descriptionResult')">Copy Description</button>
- </div>
-</section>
-
-<section id="tags" class="tool">
- <div class="card">
-  <h2>🏷️ YouTube Tags Generator</h2>
-  <label>Enter Video Topic</label>
-  <input id="tagTopic" placeholder="Example: Mini Fan DIY">
-  <button class="btn" onclick="generateTags()">Generate Tags</button>
-  <div id="tagResults" class="result"></div>
-  <button class="btn secondary" onclick="copyText('tagResults')">Copy All Tags</button>
- </div>
-</section>
-
-<section id="thumbnail" class="tool">
- <div class="card">
-  <h2>🖼️ Thumbnail Maker</h2>
-  <p class="small">Upload your own photo and create a simple YouTube thumbnail.</p>
-  <label>Upload Photo</label>
-  <input type="file" id="photo" accept="image/*">
-  <label>Thumbnail Text</label>
-  <input id="thumbText" placeholder="AMAZING DIY PROJECT!">
-  <label>Text Color</label>
-  <select id="thumbColor">
-   <option value="#ffffff">White</option>
-   <option value="#ffff00">Yellow</option>
-   <option value="#ff3333">Red</option>
-  </select>
-  <button class="btn" onclick="makeThumbnail()">Create Thumbnail</button>
-  <canvas id="thumbCanvas" width="1280" height="720"></canvas>
-  <button class="btn secondary" onclick="downloadThumbnail()">⬇ Download Thumbnail</button>
- </div>
-</section>
-
-<section id="tester" class="tool">
- <div class="card">
-  <h2>📊 Viral Title Tester</h2>
-  <label>Enter Your YouTube Title</label>
-  <input id="testTitle" placeholder="I Built a Mini Cooler at Home!">
-  <button class="btn" onclick="testTitle()">Analyze My Title</button>
-  <div id="testResults" style="display:none">
-   <div class="score" id="score">0%</div>
-   <div class="bar"><div id="scoreBar"></div></div>
-   <h3 id="scoreText"></h3>
-   <div id="analysis" class="result"></div>
-   <h3>Improved Title Ideas</h3>
-   <div id="improvements"></div>
+<!-- AD: TOP -->
+<div class="container ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <div class="ad-slot ad-728" id="ad-top">
+    <!-- PASTE AD UNIT CODE HERE (728x90 or responsive) -->
+    Ad Space • 728 × 90
   </div>
-  <p class="small">Note: This is an algorithmic estimate, not a prediction of actual views or guaranteed virality.</p>
- </div>
+</div>
+
+<!-- TOOL -->
+<section id="tool">
+  <div class="container">
+    <div class="sec-head">
+      <h2>The <span class="grad-text">Generator</span> Suite</h2>
+      <div class="line"></div>
+      <p>Three tools, one workspace. Everything runs privately in your browser.</p>
+    </div>
+
+    <div class="tool-grid">
+      <div>
+        <div class="panel">
+          <div class="tabs">
+            <button class="tab active" data-tab="t1">✦ Title Generator</button>
+            <button class="tab" data-tab="t2">✦ Description Generator</button>
+            <button class="tab" data-tab="t3">✦ Thumbnail Generator</button>
+          </div>
+
+          <!-- TITLE TAB -->
+          <div class="tab-content active" id="t1">
+            <label>Main Topic / Keyword</label>
+            <input id="tKeyword" placeholder="e.g. Space Facts">
+            <div class="row">
+              <div>
+                <label>Tone</label>
+                <select id="tTone">
+                  <option value="curiosity">Curiosity</option>
+                  <option value="shock">Shocking</option>
+                  <option value="cool">Cool & Clean</option>
+                  <option value="howto">How-To</option>
+                  <option value="listicle">Listicle</option>
+                </select>
+              </div>
+              <div>
+                <label>Platform</label>
+                <select id="tPlatform">
+                  <option>YouTube</option>
+                  <option>Instagram</option>
+                  <option>Blog</option>
+                  <option>Facebook</option>
+                  <option>TikTok</option>
+                </select>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn" onclick="genTitles()">Generate Titles</button>
+              <button class="btn ghost" onclick="clearTitles()">Clear</button>
+            </div>
+            <p class="hint">Every title is short, in English, with one emoji and one hashtag.</p>
+            <div class="results" id="titleResults"></div>
+          </div>
+
+          <!-- DESCRIPTION TAB -->
+          <div class="tab-content" id="t2">
+            <label>Video / Post Title</label>
+            <input id="dTitle" placeholder="e.g. 🚀 Space Facts You Missed #SpaceFacts">
+            <label>Short Summary (optional)</label>
+            <textarea id="dSummary" placeholder="Briefly describe what your content is about..."></textarea>
+            <div class="row">
+              <div>
+                <label>Channel / Brand Name</label>
+                <input id="dBrand" placeholder="Your channel name">
+              </div>
+              <div>
+                <label>Keywords (comma separated)</label>
+                <input id="dKeys" placeholder="facts, science, history">
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn" onclick="genDesc()">Generate Description</button>
+              <button class="btn ghost" onclick="copyText(document.getElementById('descOut').innerText)">Copy</button>
+            </div>
+            <div class="desc-box" id="descOut">Your description will appear here…</div>
+          </div>
+
+          <!-- THUMBNAIL TAB -->
+          <div class="tab-content" id="t3">
+            <label>Main Text</label>
+            <input id="thMain" value="UNKNOWN FACTS" maxlength="40">
+            <div class="row">
+              <div>
+                <label>Sub Text</label>
+                <input id="thSub" value="You Won't Believe #7" maxlength="50">
+              </div>
+              <div>
+                <label>Badge Text</label>
+                <input id="thBadge" value="NEW" maxlength="14">
+              </div>
+            </div>
+            <div class="row3">
+              <div>
+                <label>Font Style</label>
+                <select id="thFont">
+                  <option value="'Poppins', sans-serif">Modern Bold</option>
+                  <option value="'Inter', sans-serif">Clean Sans</option>
+                  <option value="Impact, sans-serif">Heavy Impact</option>
+                </select>
+              </div>
+              <div>
+                <label>Emoji / Symbol</label>
+                <input id="thEmoji" value="🔥" maxlength="4">
+              </div>
+              <div>
+                <label>Background Image</label>
+                <input type="file" id="thImg" accept="image/*">
+              </div>
+            </div>
+
+            <!-- PHOTO OPTIONS -->
+            <div class="photo-box">
+              <h4>📸 Your Photo</h4>
+              <p class="hint">Upload your photo and choose to keep its original background or remove it. For the best cutout, use a photo with a plain, single-colour background, or upload a transparent PNG.</p>
+              <div class="row">
+                <div>
+                  <label>Upload Photo</label>
+                  <input type="file" id="thPhoto" accept="image/*">
+                </div>
+                <div>
+                  <label>Photo Style</label>
+                  <select id="thPhotoMode">
+                    <option value="cutout">Without background (cutout)</option>
+                    <option value="original">With original background</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row3">
+                <div>
+                  <label>Photo Side</label>
+                  <select id="thPhotoSide">
+                    <option value="right">Right</option>
+                    <option value="left">Left</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Photo Size</label>
+                  <input type="range" id="thPhotoSize" min="50" max="110" value="88">
+                </div>
+                <div>
+                  <label>Cutout Strength</label>
+                  <input type="range" id="thTol" min="10" max="120" value="55">
+                </div>
+              </div>
+              <div class="actions" style="margin-top:14px">
+                <button class="btn ghost small" onclick="removePhoto()">Remove Photo</button>
+              </div>
+            </div>
+
+            <label>Colour Theme</label>
+            <div class="swatches" id="swatches"></div>
+            <div class="actions">
+              <button class="btn" onclick="drawThumb()">Generate Thumbnail</button>
+              <button class="btn ghost" onclick="downloadThumb()">⬇ Download PNG</button>
+            </div>
+            <canvas id="thumb" width="1280" height="720"></canvas>
+          </div>
+        </div>
+
+        <!-- AD: IN-CONTENT -->
+        <div class="ad-wrap">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot ad-res" id="ad-mid">
+            <!-- PASTE RESPONSIVE AD UNIT CODE HERE -->
+            Ad Space • Responsive Banner
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="side">
+        <div class="panel">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot ad-300" id="ad-side1">
+            <!-- PASTE 300x250 AD UNIT CODE HERE -->
+            Ad Space • 300 × 250
+          </div>
+        </div>
+        <div class="panel" style="text-align:left">
+          <h3 style="font-size:20px;margin-bottom:10px" class="grad-text">Quick Tips</h3>
+          <p style="color:var(--muted);font-size:14px">Keep titles under 40 characters, use one strong emoji and one hashtag. Big, bold thumbnail text with a clear face works best.</p>
+        </div>
+        <div class="panel">
+          <div class="ad-label">Advertisement</div>
+          <div class="ad-slot ad-tall" id="ad-side2">
+            <!-- PASTE 300x600 AD UNIT CODE HERE -->
+            Ad Space • 300 × 600
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
 </section>
 
-<section id="seo" class="tool">
- <div class="card">
-  <h2>🔎 YouTube SEO Analyzer</h2>
-  <label>Enter Video Title</label>
-  <input id="seoTitle" placeholder="Your YouTube video title">
-  <label>Enter Main Keyword</label>
-  <input id="seoKeyword" placeholder="Example: Mini Cooler">
-  <button class="btn" onclick="analyzeSEO()">Analyze SEO</button>
-  <div id="seoResult" class="result"></div>
- </div>
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Why Creators <span class="grad-text">Love It</span></h2>
+      <div class="line"></div>
+      <p>Simple tools, clean design, and results that look great.</p>
+    </div>
+    <div class="features">
+      <div class="feature"><div class="ic">✍️</div><h3>Short Unique Titles</h3><p>Compact English titles with an emoji and a hashtag, ready to paste on any platform.</p></div>
+      <div class="feature"><div class="ic">📝</div><h3>SEO Descriptions</h3><p>Structured descriptions with hooks, timestamps, hashtags and a call to action.</p></div>
+      <div class="feature"><div class="ic">🖼️</div><h3>Thumbnails With Your Photo</h3><p>Add your own photo with or without its background, pick a theme and download in 1280×720.</p></div>
+      <div class="feature"><div class="ic">🔒</div><h3>Private by Design</h3><p>Everything is generated locally in your browser. Your photos never leave your device.</p></div>
+      <div class="feature"><div class="ic">⚡</div><h3>Instant Results</h3><p>No sign-up and no waiting. Type your idea and get output in one click.</p></div>
+      <div class="feature"><div class="ic">📱</div><h3>Fully Responsive</h3><p>Works smoothly on phone, tablet and desktop so you can create anywhere.</p></div>
+    </div>
+  </div>
 </section>
 
-</main>
+<!-- AD: BETWEEN -->
+<div class="container ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <div class="ad-slot ad-728" id="ad-mid2">
+    <!-- PASTE AD UNIT CODE HERE -->
+    Ad Space • 728 × 90
+  </div>
+</div>
 
+<!-- HOW -->
+<section id="how">
+  <div class="container">
+    <div class="sec-head">
+      <h2>How It <span class="grad-text">Works</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Enter Your Idea</h3><p>Type your topic and choose a tone and platform.</p></div>
+      <div class="step"><h3>Generate</h3><p>Click once and receive short, unique options instantly.</p></div>
+      <div class="step"><h3>Customize</h3><p>Add your photo, pick a theme and polish the details.</p></div>
+      <div class="step"><h3>Publish</h3><p>Copy or download and publish with confidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Growth <span class="grad-text">Insights</span></h2>
+      <div class="line"></div>
+      <p>Practical advice to help your content stand out and get discovered.</p>
+    </div>
+    <div class="tips">
+      <div class="tip"><h3>Keep It Short</h3><p>Short titles are easier to read on small screens and are not cut off in search results. Aim for 25 to 40 characters.</p></div>
+      <div class="tip"><h3>Show Your Face</h3><p>Thumbnails with a clear, expressive face build trust and help viewers recognise your channel at a glance.</p></div>
+      <div class="tip"><h3>Use One Hashtag</h3><p>A single relevant hashtag looks clean and helps discovery without making the title feel spammy.</p></div>
+      <div class="tip"><h3>High Contrast Wins</h3><p>Use bright text on a darker background and keep it to four words or fewer so it stays readable when small.</p></div>
+      <div class="tip"><h3>Be Consistent</h3><p>Reuse the same colours, fonts and layout so viewers recognise your content instantly in a crowded feed.</p></div>
+      <div class="tip"><h3>Test and Improve</h3><p>Try two title variations over time and compare click-through rate. Small improvements compound into big growth.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Frequently Asked <span class="grad-text">Questions</span></h2>
+      <div class="line"></div>
+    </div>
+    <div class="faq">
+      <div class="q"><button>Is Violet Studio really free?<span>+</span></button><div class="a">Yes. All three generators are free to use with no account required. The site is supported by advertisements.</div></div>
+      <div class="q"><button>Do you store my photo or images?<span>+</span></button><div class="a">No. Everything is processed directly in your browser. Uploaded photos and backgrounds are never sent to any server.</div></div>
+      <div class="q"><button>How does the background removal work?<span>+</span></button><div class="a">It detects the colour around the edges of your photo and removes it. It works best with plain backgrounds. For perfect results, upload a transparent PNG and the tool will keep it as is.</div></div>
+      <div class="q"><button>What size are the thumbnails?<span>+</span></button><div class="a">Thumbnails are 1280 × 720 pixels, the recommended 16:9 size for YouTube and most video platforms.</div></div>
+      <div class="q"><button>How can I contact the owner?<span>+</span></button><div class="a">Email us any time at tubeunknownfact@gmail.com for business enquiries, collaborations or advertising.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="owner">
+      <span class="badge">Founder &amp; Owner</span>
+      <h2 class="grad-text">Muhammad Ayan Sheikh</h2>
+      <div class="name">Violet Studio</div>
+      <p>For business enquiries, advertising partnerships and collaborations, reach out directly. We reply to every professional message.</p>
+      <a class="btn" href="mailto:tubeunknownfact@gmail.com">✉ tubeunknownfact@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- AD: FOOTER -->
+<div class="container ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <div class="ad-slot ad-728" id="ad-foot">
+    <!-- PASTE AD UNIT CODE HERE -->
+    Ad Space • 728 × 90
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
- TubeBoost AI © 2026<br>
- <span class="small">Create Better. Grow Smarter. 🚀</span>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <div class="logo" style="margin-bottom:14px"><i></i><span class="grad-text">Violet Studio</span></div>
+        <p>A clean creator toolkit for generating titles, descriptions and thumbnails with your own photo.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#tool">Generator</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#tips">Growth Tips</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Owner: Muhammad Ayan Sheikh</li>
+          <li><a href="mailto:tubeunknownfact@gmail.com">tubeunknownfact@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© <span id="yr"></span> Violet Studio. All rights reserved. Owned by Muhammad Ayan Sheikh.</div>
+  </div>
 </footer>
 
+<div id="toast">Copied to clipboard ✓</div>
+
 <script>
-
-function showTool(id,btn){
- document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- document.querySelectorAll('.menu button').forEach(x=>x.classList.remove('active'));
- if(btn)btn.classList.add('active');
- window.scrollTo(0,0);
+/* ---------- Helpers ---------- */
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg||'Copied to clipboard ✓';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1800);
 }
-
-function pick(arr){
- return arr[Math.floor(Math.random()*arr.length)];
-}
-
-function shuffle(arr){
- return [...arr].sort(()=>Math.random()-.5);
-}
-
-function cleanTopic(id){
- return document.getElementById(id).value.trim();
-}
-
-const titleHistory = new Set();
-
-const titlePatterns = [
- t=>`I Built ${t} at Home! 🤯`,
- t=>`Can This ${t} Actually Work?`,
- t=>`I Made a MINI ${t} in 5 Minutes!`,
- t=>`Nobody Expected This ${t}! 🔥`,
- t=>`This ${t} Is AMAZING!`,
- t=>`I Tried Making ${t} at Home!`,
- t=>`DIY ${t} – So Easy!`,
- t=>`The Smartest ${t} Idea Ever!`,
- t=>`I Created My Own ${t}!`,
- t=>`You Won't Believe This ${t}!`,
- t=>`Making ${t} From Scratch!`,
- t=>`This Homemade ${t} Is Genius!`,
- t=>`Only 5 Minutes to Make ${t}!`,
- t=>`My Craziest ${t} Experiment!`,
- t=>`Turning an Idea Into ${t}!`,
- t=>`Is This the Best ${t} Ever?`,
- t=>`Amazing Homemade ${t}!`,
- t=>`I Tested My Own ${t}!`,
- t=>`This DIY ${t} Actually Works!`,
- t=>`The Ultimate Mini ${t}!`,
- t=>`Simple Idea, Amazing ${t}!`,
- t=>`Wait Until You See This ${t}!`,
- t=>`From Nothing to ${t}!`,
- t=>`Making a Crazy ${t} at Home!`
-];
-
-function generateTitles(){
- const topic=cleanTopic('topic');
- if(!topic){alert('Please enter your video topic!');return;}
- let output=[];
- let attempts=0;
- while(output.length<10 && attempts<500){
-  attempts++;
-  let title=pick(titlePatterns)(topic);
-  if(!titleHistory.has(title)){
-   titleHistory.add(title);
-   output.push(title);
+function copyText(txt){
+  if(!txt||!txt.trim())return;
+  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(()=>toast());}
+  else{
+    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');document.body.removeChild(ta);toast();
   }
- }
- if(output.length===0){
-  titleHistory.clear();
-  generateTitles();
-  return;
- }
- document.getElementById('titleResults').innerHTML=
- output.map((t,i)=>`
- <div class="result">
- <b>${escapeHTML(t)}</b><br>
- <button class="btn secondary" onclick="copyOne(this)">Copy</button>
- </div>`).join('');
 }
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
+const cap=s=>s.replace(/\b\w/g,c=>c.toUpperCase());
+document.getElementById('yr').textContent=new Date().getFullYear();
 
-function escapeHTML(s){
- return String(s).replace(/[&<>"']/g,c=>({
- '&':'&amp;','<':'&lt;','>':'&gt;',
- '"':'&quot;',"'":'&#39;'
- }[c]));
-}
-
-function copyOne(btn){
- let text=btn.parentElement.querySelector('b').innerText;
- navigator.clipboard.writeText(text).then(()=>alert('Copied!'));
-}
-
-function copyText(id){
- let el=document.getElementById(id);
- let text=el.innerText;
- navigator.clipboard.writeText(text).then(()=>alert('Copied!'));
-}
-
-function generateDescription(){
- let title=cleanTopic('descTitle');
- let topic=cleanTopic('descTopic');
- if(!title||!topic){alert('Enter title and topic!');return;}
-
- let intro=pick([
-  `Today I am sharing an amazing project about ${topic}.`,
-  `Welcome back! Today we are creating something interesting: ${topic}.`,
-  `Watch this creative experiment where I make ${topic}!`,
-  `Here is a fun and simple project about ${topic}.`
- ]);
-
- let ending=pick([
-  'Like the video and subscribe for more creative projects!',
-  'Share your thoughts in the comments and subscribe!',
-  'Thanks for watching! Stay tuned for more amazing videos!'
- ]);
-
- let desc=`${title}
-
-${intro}
-
-In this video, you will discover a creative way to make and explore ${topic}.
-
-If you enjoy DIY projects, homemade inventions and creative experiments, this video is for you!
-
-${ending}
-
-#Shorts #YouTubeShorts #DIY #Creative #Trending`;
-
- let box=document.getElementById('descriptionResult');
- box.style.display='block';
- box.innerText=desc;
-}
-
-function generateTags(){
- let topic=cleanTopic('tagTopic');
- if(!topic){alert('Enter your video topic!');return;}
-
- let base=[
-  topic,topic+' DIY','how to make '+topic,
-  'homemade '+topic,'DIY projects',
-  'creative experiments','homemade inventions',
-  'easy DIY','mini projects',
-  'amazing DIY','creative ideas',
-  'YouTube Shorts','shorts video',
-  'how to make at home','unique inventions',
-  topic+' tutorial',topic+' at home'
- ];
-
- let tags=[...new Set(base.map(x=>x.toLowerCase()))];
-
- document.getElementById('tagResults').innerHTML=
- shuffle(tags).slice(0,15).map(x=>
- `<span class="tag">${escapeHTML(x)}</span>`
- ).join('');
-}
-
-let uploadedImage=null;
-let canvas=document.getElementById('thumbCanvas');
-let ctx=canvas.getContext('2d');
-
-document.getElementById('photo').addEventListener('change',function(e){
- let file=e.target.files[0];
- if(!file)return;
- let img=new Image();
- img.onload=()=>{
-  uploadedImage=img;
-  makeThumbnail();
- };
- img.src=URL.createObjectURL(file);
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tab').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById(b.dataset.tab).classList.add('active');
+    if(b.dataset.tab==='t3')drawThumb();
+  });
 });
 
-function makeThumbnail(){
- if(!uploadedImage){
-  alert('Please upload a photo first!');
-  return;
- }
+/* ---------- FAQ ---------- */
+document.querySelectorAll('.q button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const q=b.parentElement,a=q.querySelector('.a');
+    const open=q.classList.toggle('open');
+    a.style.maxHeight=open?a.scrollHeight+30+'px':0;
+  });
+});
 
- ctx.fillStyle='#111';
- ctx.fillRect(0,0,1280,720);
+/* ---------- Counter animation ---------- */
+const counters=document.querySelectorAll('[data-count]');
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target,target=+el.dataset.count;let n=0;
+      const step=Math.max(1,Math.ceil(target/80));
+      const iv=setInterval(()=>{
+        n+=step;
+        if(n>=target){n=target;clearInterval(iv);}
+        el.textContent=n.toLocaleString();
+      },20);
+      io.unobserve(el);
+    }
+  });
+},{threshold:.5});
+counters.forEach(c=>io.observe(c));
 
- let ratio=Math.max(1280/uploadedImage.width,720/uploadedImage.height);
- let w=uploadedImage.width*ratio;
- let h=uploadedImage.height*ratio;
- ctx.drawImage(uploadedImage,(1280-w)/2,(720-h)/2,w,h);
+/* ---------- TITLE GENERATOR (short + emoji + 1 hashtag) ---------- */
+/* {e}=emoji  {K}=keyword (Title Case)  {n}=number  {h}=hashtag */
+const T={
+  curiosity:[
+    "{e} {K}: The Hidden Truth {h}",
+    "{e} Why {K} Hits Different {h}",
+    "{e} The {K} Secret {h}",
+    "{e} {K} Nobody Explains {h}",
+    "{e} What {K} Really Is {h}",
+    "{e} Inside {K} {h}",
+    "{e} {K} Untold {h}",
+    "{e} Decoding {K} {h}",
+    "{e} Wait, {K}? {h}",
+    "{e} The {K} Mystery {h}"
+  ],
+  shock:[
+    "{e} {K} Went Too Far {h}",
+    "{e} Stop! {K} Is Wild {h}",
+    "{e} {K} Shocked Me {h}",
+    "{e} Unreal {K} Moment {h}",
+    "{e} {K} Exposed {h}",
+    "{e} No Way, {K}! {h}",
+    "{e} {K}: Mind Blown {h}",
+    "{e} The Dark Side of {K} {h}",
+    "{e} {K} Changes Everything {h}",
+    "{e} Can't Unsee {K} {h}"
+  ],
+  cool:[
+    "{e} {K}, Simplified {h}",
+    "{e} Pure {K} Vibes {h}",
+    "{e} {K} in Style {h}",
+    "{e} Next Level {K} {h}",
+    "{e} {K} Done Right {h}",
+    "{e} Meet {K} {h}",
+    "{e} {K} Reimagined {h}",
+    "{e} Just {K} {h}",
+    "{e} {K} Hits Hard {h}",
+    "{e} Smooth {K} {h}"
+  ],
+  howto:[
+    "{e} {K} in {n} Steps {h}",
+    "{e} Learn {K} Fast {h}",
+    "{e} {K} for Beginners {h}",
+    "{e} Master {K} Today {h}",
+    "{e} {K} Made Easy {h}",
+    "{e} Quick {K} Guide {h}",
+    "{e} Start {K} Now {h}",
+    "{e} {K}: Zero to Pro {h}",
+    "{e} Fix Your {K} {h}",
+    "{e} {K} Cheat Sheet {h}"
+  ],
+  listicle:[
+    "{e} {n} {K} Facts {h}",
+    "{e} Top {n} {K} Secrets {h}",
+    "{e} {n} {K} Tips {h}",
+    "{e} {n} Wild {K} Facts {h}",
+    "{e} Best {n} {K} Ideas {h}",
+    "{e} {n} {K} Mistakes {h}",
+    "{e} {n} {K} Hacks {h}",
+    "{e} {n} Crazy {K} Truths {h}",
+    "{e} {n} {K} You Missed {h}",
+    "{e} Only {n} {K} Matter {h}"
+  ]
+};
+const toneEmojis={
+  curiosity:["🔍","🤔","🧠","✨","👀","🌌"],
+  shock:["🔥","😱","💥","⚡","🤯","🚨"],
+  cool:["😎","💜","🌀","🎧","💫","🪩"],
+  howto:["📘","🛠️","🎯","💡","🚀","✅"],
+  listicle:["🏆","🔢","📌","⭐","🎬","🌟"]
+};
+const pfIcon={YouTube:"▶",Instagram:"✨",Blog:"✍",Facebook:"👍",TikTok:"🎵"};
 
- let text=document.getElementById('thumbText').value||'AMAZING DIY!';
- let color=document.getElementById('thumbColor').value;
-
- ctx.fillStyle='rgba(0,0,0,.48)';
- ctx.fillRect(0,530,1280,190);
-
- ctx.font='bold 76px Arial';
- ctx.textAlign='center';
- ctx.textBaseline='middle';
- ctx.lineWidth=12;
- ctx.strokeStyle='#000';
- ctx.strokeText(text.toUpperCase(),640,620,1150);
- ctx.fillStyle=color;
- ctx.fillText(text.toUpperCase(),640,620,1150);
+function makeTag(k){
+  const words=k.replace(/[^a-zA-Z0-9\s]/g,'').trim().split(/\s+/).filter(Boolean);
+  let tag=words.map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join('');
+  if(tag.length>18)tag=words.slice(0,2).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join('');
+  return '#'+(tag||'Trending');
+}
+function shortKeyword(k){
+  /* keep keyword compact so title stays short */
+  const w=k.trim().split(/\s+/);
+  return cap(w.slice(0,3).join(' '));
+}
+function genTitles(){
+  const raw=document.getElementById('tKeyword').value.trim();
+  if(!raw){toast('Please enter a keyword');return;}
+  const tone=document.getElementById('tTone').value;
+  const pf=document.getElementById('tPlatform').value;
+  const nums=[3,5,7,9,10,12];
+  const K=shortKeyword(raw),h=makeTag(raw);
+  const emos=shuffle(toneEmojis[tone]);
+  const list=shuffle(T[tone]).slice(0,6).map((t,i)=>{
+    return t.replace(/{e}/g,emos[i%emos.length])
+            .replace(/{K}/g,K)
+            .replace(/{n}/g,pick(nums))
+            .replace(/{h}/g,h);
+  });
+  const box=document.getElementById('titleResults');
+  box.innerHTML='';
+  list.forEach(t=>{
+    const d=document.createElement('div');d.className='result';
+    const len=t.length;
+    const info=document.createElement('div');
+    const p=document.createElement('p');p.textContent=t;
+    const s=document.createElement('small');
+    s.textContent=`${pfIcon[pf]} ${pf} • ${len} characters ${len<=45?'• Short & clean':'• Slightly long'}`;
+    info.appendChild(p);info.appendChild(s);
+    const b=document.createElement('button');b.className='btn small';b.textContent='Copy';
+    b.onclick=()=>copyText(t);
+    d.appendChild(info);d.appendChild(b);box.appendChild(d);
+  });
+}
+function clearTitles(){
+  document.getElementById('titleResults').innerHTML='';
+  document.getElementById('tKeyword').value='';
 }
 
-function downloadThumbnail(){
- if(!uploadedImage){alert('Create a thumbnail first!');return;}
- let link=document.createElement('a');
- link.download='TubeBoost-Thumbnail.png';
- link.href=canvas.toDataURL('image/png');
- link.click();
+/* ---------- Description generator ---------- */
+function genDesc(){
+  const title=document.getElementById('dTitle').value.trim();
+  if(!title){toast('Please enter a title');return;}
+  const sum=document.getElementById('dSummary').value.trim();
+  const brand=document.getElementById('dBrand').value.trim()||'our channel';
+  const keys=document.getElementById('dKeys').value.split(',').map(s=>s.trim()).filter(Boolean);
+  const hooks=[
+    `Welcome! In this video, we dive deep into "${title}".`,
+    `Ever wondered about "${title}"? Today, you'll finally get the full story.`,
+    `Get ready, because "${title}" is going to change how you see things.`
+  ];
+  const body=sum||`We explore the most fascinating details, break down what matters, and share insights you won't find anywhere else.`;
+  const tags=keys.length?keys.map(k=>'#'+k.replace(/\s+/g,'')).join(' '):'#facts #viral #trending';
+  const out=
+`${pick(hooks)}
+
+${body}
+
+⏱ In this video:
+00:00 – Introduction
+01:00 – The main story
+03:30 – Key insights
+06:00 – Final thoughts
+
+🔔 Enjoy the content? Subscribe to ${brand}, hit the bell icon and share this with a friend who'd love it.
+
+💬 Tell us your thoughts in the comments below. We read every one!
+
+📩 Business enquiries: tubeunknownfact@gmail.com
+
+${tags}${keys.length?'\n\nKeywords: '+keys.join(', '):''}`;
+  document.getElementById('descOut').textContent=out;
 }
 
-function testTitle(){
- let title=cleanTopic('testTitle');
- if(!title){alert('Enter a title first!');return;}
+/* ---------- THUMBNAIL GENERATOR ---------- */
+const themes=[
+  {n:'Violet Night',c:['#0e0b1f','#2a1d6b','#07060f'],a:'#9b86ff',t:'#f3efff'},
+  {n:'Ocean Blue',c:['#07101f','#173f8f','#04070f'],a:'#5aa2ff',t:'#eaf3ff'},
+  {n:'Deep Purple',c:['#13081f','#4a1d86','#08030f'],a:'#c08bff',t:'#f7ecff'},
+  {n:'Slate Grey',c:['#14151b','#3a3d4d','#0a0b0f'],a:'#aab0d6',t:'#f1f2fa'},
+  {n:'Indigo Blue',c:['#0a0a22','#2c2f9e','#05050f'],a:'#7f8cff',t:'#eceeff'},
+  {n:'Cyan Violet',c:['#08142a','#4b2fa8','#05060f'],a:'#4fd8ff',t:'#eafbff'}
+];
+let curTheme=0,bgImg=null,photoImg=null,photoCanvas=null,tolTimer=null;
 
- let score=35;
- let lower=title.toLowerCase();
- let words=title.trim().split(/\s+/);
+const sw=document.getElementById('swatches');
+themes.forEach((th,i)=>{
+  const d=document.createElement('div');
+  d.className='sw'+(i===0?' active':'');
+  d.title=th.n;
+  d.style.background=`linear-gradient(135deg,${th.c[1]},${th.a})`;
+  d.onclick=()=>{
+    document.querySelectorAll('.sw').forEach(x=>x.classList.remove('active'));
+    d.classList.add('active');curTheme=i;drawThumb();
+  };
+  sw.appendChild(d);
+});
 
- let curiosity=['secret','believe','unexpected','nobody','crazy','amazing','wait','surprise'];
- let emotion=['amazing','shocking','crazy','unbelievable','incredible','🤯','🔥','😱'];
- let keywords=['how','make','diy','homemade','tutorial','build','review','best'];
+/* background upload */
+document.getElementById('thImg').addEventListener('change',e=>{
+  const f=e.target.files[0];if(!f)return;
+  const img=new Image();
+  img.onload=()=>{bgImg=img;drawThumb();};
+  img.src=URL.createObjectURL(f);
+});
 
- let checks=[];
-
- if(words.length>=4&&words.length<=12){score+=15;checks.push('✓ Good title length');}
- else checks.push('Try keeping your title around 4–12 words.');
-
- if(curiosity.some(x=>lower.includes(x))){score+=12;checks.push('✓ Curiosity element found');}
- else checks.push('Consider adding a genuine curiosity element.');
-
- if(emotion.some(x=>lower.includes(x))){score+=10;checks.push('✓ Emotional appeal found');}
- else checks.push('Add an emotional word if it fits your video.');
-
- if(keywords.some(x=>lower.includes(x))){score+=12;checks.push('✓ Relevant content keyword found');}
- else checks.push('Use a clear topic keyword.');
-
- if(title.length>=20&&title.length<=65){score+=10;checks.push('✓ Good character length');}
- else checks.push('Try making the title clearer and more concise.');
-
- if(/[!?]/.test(title)){score+=5;checks.push('✓ Punctuation adds emphasis');}
-
- if(words.length>15){score-=12;checks.push('Title may be too long.');}
-
- score=Math.max(0,Math.min(100,score));
-
- document.getElementById('testResults').style.display='block';
- document.getElementById('score').innerText=score+'%';
- document.getElementById('scoreBar').style.width=score+'%';
-
- document.getElementById('scoreText').innerText=
- score>=80?'Strong Title Potential! 🚀':
- score>=60?'Good Title – Can Improve!':
- 'Needs Improvement – Try Again!';
-
- document.getElementById('analysis').innerHTML=
- checks.map(x=>'<p>'+escapeHTML(x)+'</p>').join('');
-
- let improved=[
-  `I Tried ${title}... Here's What Happened!`,
-  `You Won't Believe This: ${title}`,
-  `The Amazing Way to ${title}`
- ];
-
- document.getElementById('improvements').innerHTML=
- improved.map(t=>`<div class="result">${escapeHTML(t)}
- <button class="btn secondary" onclick="copyOne(this)">Copy</button>
- <b style="display:none">${escapeHTML(t)}</b></div>`).join('');
+/* photo upload */
+document.getElementById('thPhoto').addEventListener('change',e=>{
+  const f=e.target.files[0];if(!f)return;
+  const img=new Image();
+  img.onload=()=>{photoImg=img;buildPhoto();drawThumb();};
+  img.src=URL.createObjectURL(f);
+});
+function removePhoto(){
+  photoImg=null;photoCanvas=null;
+  document.getElementById('thPhoto').value='';
+  drawThumb();
 }
 
-function analyzeSEO(){
- let title=cleanTopic('seoTitle');
- let keyword=cleanTopic('seoKeyword');
+/* build processed photo (cutout or original) */
+function buildPhoto(){
+  if(!photoImg){photoCanvas=null;return;}
+  const mode=document.getElementById('thPhotoMode').value;
+  const maxS=800;
+  const sc=Math.min(1,maxS/Math.max(photoImg.width,photoImg.height));
+  const w=Math.max(1,Math.round(photoImg.width*sc)),h=Math.max(1,Math.round(photoImg.height*sc));
+  const oc=document.createElement('canvas');oc.width=w;oc.height=h;
+  const octx=oc.getContext('2d',{willReadFrequently:true});
+  octx.drawImage(photoImg,0,0,w,h);
 
- if(!title||!keyword){alert('Enter title and keyword!');return;}
+  if(mode==='cutout'){
+    const data=octx.getImageData(0,0,w,h);
+    const px=data.data;
+    /* if corners already transparent, keep as is */
+    const cornerA=[px[3],px[(w-1)*4+3],px[((h-1)*w)*4+3],px[((h-1)*w+(w-1))*4+3]];
+    const alreadyTransparent=cornerA.filter(a=>a<10).length>=3;
+    if(!alreadyTransparent){
+      const tol=+document.getElementById('thTol').value;
+      /* average colour of the 4 corners (5x5 patches) */
+      let r=0,g=0,b=0,c=0;
+      const patch=(x0,y0)=>{
+        for(let y=y0;y<y0+5;y++)for(let x=x0;x<x0+5;x++){
+          const xx=Math.min(w-1,x),yy=Math.min(h-1,y);
+          const i=(yy*w+xx)*4;r+=px[i];g+=px[i+1];b+=px[i+2];c++;
+        }
+      };
+      patch(0,0);patch(w-6,0);patch(0,h-6);patch(w-6,h-6);
+      r/=c;g/=c;b/=c;
+      const dist=i=>Math.sqrt((px[i]-r)**2+(px[i+1]-g)**2+(px[i+2]-b)**2);
+      const visited=new Uint8Array(w*h);
+      const stack=[];
+      const tryPush=(x,y)=>{
+        if(x<0||y<0||x>=w||y>=h)return;
+        const p=y*w+x;
+        if(visited[p])return;
+        if(dist(p*4)<=tol){visited[p]=1;stack.push(p);}
+      };
+      for(let x=0;x<w;x++){tryPush(x,0);tryPush(x,h-1);}
+      for(let y=0;y<h;y++){tryPush(0,y);tryPush(w-1,y);}
+      while(stack.length){
+        const p=stack.pop();
+        const x=p%w,y=(p-x)/w;
+        tryPush(x+1,y);tryPush(x-1,y);tryPush(x,y+1);tryPush(x,y-1);
+      }
+      /* apply transparency + soften edges */
+      const edge=new Uint8Array(w*h);
+      for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){
+        const p=y*w+x;
+        if(!visited[p]&&(visited[p-1]||visited[p+1]||visited[p-w]||visited[p+w]))edge[p]=1;
+      }
+      for(let p=0;p<w*h;p++){
+        if(visited[p])px[p*4+3]=0;
+        else if(edge[p])px[p*4+3]=150;
+      }
+      octx.putImageData(data,0,0);
+    }
+  }
+  photoCanvas=oc;
+}
+document.getElementById('thPhotoMode').addEventListener('change',()=>{buildPhoto();drawThumb();});
+document.getElementById('thTol').addEventListener('input',()=>{
+  clearTimeout(tolTimer);
+  tolTimer=setTimeout(()=>{buildPhoto();drawThumb();},120);
+});
+['thPhotoSide','thPhotoSize'].forEach(id=>document.getElementById(id).addEventListener('input',drawThumb));
+['thMain','thSub','thBadge','thEmoji'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',drawThumb);
+});
+document.getElementById('thFont').addEventListener('change',drawThumb);
 
- let match=title.toLowerCase().includes(keyword.toLowerCase());
-
- let suggestions=[
-  match?'✓ Main keyword is present in title.':'Add your main keyword naturally to your title.',
-  'Use the main keyword naturally in the first lines of your description.',
-  'Create a clear and attractive thumbnail.',
-  'Use only relevant tags and hashtags.',
-  'Make sure your video delivers what the title promises.'
- ];
-
- document.getElementById('seoResult').innerHTML=
- `<h3>SEO Analysis</h3>
- <p>Keyword: ${escapeHTML(keyword)}</p><br>
- ${suggestions.map(x=>'<p>'+escapeHTML(x)+'</p><br>').join('')}
- <p class="small">These are general SEO suggestions, not an official YouTube ranking score.</p>`;
+function wrapLines(ctx,text,maxW){
+  const words=text.split(' ');let line='';const lines=[];
+  words.forEach(w=>{
+    const test=line?line+' '+w:w;
+    if(ctx.measureText(test).width>maxW&&line){lines.push(line);line=w;}
+    else line=test;
+  });
+  if(line)lines.push(line);
+  return lines;
+}
+function rrect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();
 }
 
+function drawThumb(){
+  const cv=document.getElementById('thumb'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height,th=themes[curTheme];
+  const font=document.getElementById('thFont').value;
+  const main=(document.getElementById('thMain').value||'').toUpperCase();
+  const sub=document.getElementById('thSub').value;
+  const badge=document.getElementById('thBadge').value.toUpperCase();
+  const emo=document.getElementById('thEmoji').value;
+  const mode=document.getElementById('thPhotoMode').value;
+  const side=document.getElementById('thPhotoSide').value;
+  const sizePct=+document.getElementById('thPhotoSize').value/100;
+  const hasPhoto=!!photoCanvas;
+
+  ctx.clearRect(0,0,W,H);
+
+  /* ---- background ---- */
+  if(bgImg){
+    const r=Math.max(W/bgImg.width,H/bgImg.height);
+    const w=bgImg.width*r,h=bgImg.height*r;
+    ctx.drawImage(bgImg,(W-w)/2,(H-h)/2,w,h);
+    const ov=ctx.createLinearGradient(0,0,W,H);
+    ov.addColorStop(0,'rgba(0,0,0,.70)');ov.addColorStop(1,'rgba(0,0,0,.30)');
+    ctx.fillStyle=ov;ctx.fillRect(0,0,W,H);
+  }else{
+    const g=ctx.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,th.c[0]);g.addColorStop(.5,th.c[1]);g.addColorStop(1,th.c[2]);
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    const gx=hasPhoto?(side==='right'?W*.75:W*.25):W*.75;
+    const rg=ctx.createRadialGradient(gx,H*.35,20,gx,H*.35,540);
+    rg.addColorStop(0,th.a+'66');rg.addColorStop(1,'transparent');
+    ctx.fillStyle=rg;ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle=th.a+'2a';ctx.lineWidth=2;
+    for(let i=1;i<=5;i++){ctx.beginPath();ctx.arc(gx,H*.4,i*90,0,Math.PI*2);ctx.stroke();}
+  }
+  const vg=ctx.createRadialGradient(W/2,H/2,H*.3,W/2,H/2,H*1.1);
+  vg.addColorStop(0,'transparent');vg.addColorStop(1,'rgba(0,0,0,.55)');
+  ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
+
+  /* ---- photo ---- */
+  if(hasPhoto){
+    const pw=photoCanvas.width,ph=photoCanvas.height;
+    if(mode==='cutout'){
+      const dh=H*sizePct*1.05;
+      const dw=pw*(dh/ph);
+      const maxW=W*.56;
+      let fw=dw,fh=dh;
+      if(dw>maxW){fw=maxW;fh=ph*(maxW/pw);}
+      const x=side==='right'?W-fw-40:40;
+      const y=H-fh;
+      ctx.save();
+      ctx.shadowColor=th.a+'aa';ctx.shadowBlur=40;
+      ctx.drawImage(photoCanvas,x,y,fw,fh);
+      ctx.restore();
+      ctx.drawImage(photoCanvas,x,y,fw,fh);
+    }else{
+      const boxH=H*.78*sizePct/0.88;
+      let fh=boxH,fw=pw*(fh/ph);
+      if(fw>W*.42){fw=W*.42;fh=ph*(fw/pw);}
+      const x=side==='right'?W-fw-80:80;
+      const y=(H-fh)/2;
+      ctx.save();
+      ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=36;ctx.shadowOffsetY=10;
+      rrect(ctx,x,y,fw,fh,28);ctx.fillStyle='#000';ctx.fill();
+      ctx.restore();
+      ctx.save();
+      rrect(ctx,x,y,fw,fh,28);ctx.clip();
+      ctx.drawImage(photoCanvas,x,y,fw,fh);
+      ctx.restore();
+      ctx.strokeStyle=th.a;ctx.lineWidth=6;
+      rrect(ctx,x,y,fw,fh,28);ctx.stroke();
+    }
+  }
+
+  /* ---- frame ---- */
+  ctx.strokeStyle=th.a;ctx.lineWidth=6;ctx.strokeRect(26,26,W-52,H-52);
+  ctx.strokeStyle=th.a+'66';ctx.lineWidth=2;ctx.strokeRect(42,42,W-84,H-84);
+
+  /* ---- emoji (big when no photo, small when photo) ---- */
+  if(emo&&!hasPhoto){
+    ctx.font='200px serif';ctx.textAlign='right';ctx.textBaseline='middle';
+    ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=30;
+    ctx.fillText(emo,W-90,H*.5);
+    ctx.shadowBlur=0;
+  }
+
+  /* ---- text area ---- */
+  const textX=hasPhoto?(side==='right'?90:W*.47):90;
+  const textW=hasPhoto?W*.43:W*.62;
+
+  ctx.textAlign='left';ctx.textBaseline='middle';
+  let size=150,lines=[];
+  for(size=150;size>=44;size-=4){
+    ctx.font=`800 ${size}px ${font}`;
+    lines=wrapLines(ctx,main,textW);
+    const widest=Math.max(...lines.map(l=>ctx.measureText(l).width),0);
+    if(lines.length<=3&&widest<=textW)break;
+  }
+  const lh=size*1.08;
+  const blockH=lines.length*lh;
+  const startY=H*.46-blockH/2+lh/2;
+
+  ctx.shadowColor='rgba(0,0,0,.85)';ctx.shadowBlur=22;ctx.shadowOffsetY=8;
+  const grad=ctx.createLinearGradient(0,startY-lh/2,0,startY+blockH);
+  grad.addColorStop(0,th.t);grad.addColorStop(1,th.a);
+  ctx.fillStyle=grad;
+  lines.forEach((l,i)=>ctx.fillText(l,textX,startY+i*lh));
+  ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+
+  /* sub text */
+  const subY=Math.min(startY+blockH-lh/2+size*.62,H-130);
+  let subSize=44;
+  ctx.font=`500 ${subSize}px ${font}`;
+  while(ctx.measureText(sub).width>textW&&subSize>24){subSize-=2;ctx.font=`500 ${subSize}px ${font}`;}
+  ctx.fillStyle=th.t;
+  ctx.fillText(sub,textX+2,subY);
+
+  /* accent line */
+  ctx.fillStyle=th.a;ctx.fillRect(textX+2,subY+36,200,6);
+
+  /* small emoji beside accent line when photo present */
+  if(emo&&hasPhoto){
+    ctx.font='70px serif';
+    ctx.fillText(emo,textX+230,subY+40);
+  }
+
+  /* badge */
+  if(badge){
+    ctx.font=`bold 30px 'Inter', sans-serif`;
+    const bw=ctx.measureText(badge).width+60;
+    const bx=hasPhoto&&side==='left'?textX:80;
+    ctx.fillStyle=th.a;
+    rrect(ctx,bx,70,bw,60,30);ctx.fill();
+    ctx.fillStyle='#0c0a1a';ctx.textBaseline='middle';
+    ctx.fillText(badge,bx+30,101);
+  }
+
+  /* watermark */
+  ctx.font=`500 22px 'Inter', sans-serif`;ctx.fillStyle=th.a+'cc';
+  ctx.textAlign=hasPhoto&&side==='right'?'left':'right';
+  ctx.fillText('VIOLET STUDIO',hasPhoto&&side==='right'?80:W-80,H-70);
+}
+function downloadThumb(){
+  const cv=document.getElementById('thumb');
+  const a=document.createElement('a');
+  a.download='violet-thumbnail.png';
+  a.href=cv.toDataURL('image/png');
+  a.click();
+  toast('Thumbnail downloaded ✓');
+}
+window.addEventListener('load',()=>{
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(drawThumb);}else{drawThumb();}
+});
 </script>
 </body>
 </html>
