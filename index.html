@@ -11,8 +11,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7726599912401696"
      crossorigin="anonymous"></script>
 
-<title>Violet Studio | Title, Description & Thumbnail Generator</title>
-<meta name="description" content="Violet Studio is a free tool to generate short unique titles, SEO descriptions and thumbnails with your own photo for YouTube, Instagram and blogs.">
+<title>TubeBoost AI 🚀 | Title, Description & Thumbnail Generator</title>
+<meta name="description" content="TubeBoost AI offers free YouTube title, description and thumbnail tools. Generate short unique titles and thumbnails with your own photo.">
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,10 +24,10 @@
   --bg2:#17171f;
   --card:#1b1b25;
   --line:rgba(139,123,255,.20);
-  --p1:#6d5dfc;      /* violet */
-  --p2:#8f7bff;      /* light violet */
-  --p3:#4f8cff;      /* blue */
-  --p4:#b79cff;      /* soft purple */
+  --p1:#6d5dfc;
+  --p2:#8f7bff;
+  --p3:#4f8cff;
+  --p4:#b79cff;
   --text:#e7e7f0;
   --muted:#8e8fa3;
   --radius:16px;
@@ -84,7 +84,7 @@ nav ul a:hover::after{width:100%}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(109,93,252,.45)}
 .btn.ghost{background:transparent;color:var(--p4);border-color:var(--line);box-shadow:none}
 .btn.ghost:hover{background:rgba(139,123,255,.10)}
-.btn.small{padding:8px 16px;font-size:12px;border-radius:10px}
+.btn.small{padding:8px 16px;font-size:12px;border-radius:10px;white-space:nowrap}
 .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--p4);padding:8px 12px;border-radius:10px;cursor:pointer;font-size:18px}
 
 /* HERO */
@@ -151,9 +151,10 @@ textarea{min-height:90px;resize:vertical}
 .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
 .actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
 .hint{font-size:12px;color:var(--muted);margin-top:6px}
+.sub-title{font-family:'Poppins',sans-serif;font-size:18px;margin:34px 0 4px;color:var(--p4)}
 
 /* RESULTS */
-.results{margin-top:26px;display:grid;gap:12px}
+.results{margin-top:20px;display:grid;gap:12px}
 .result{
   display:flex;justify-content:space-between;align-items:center;gap:16px;
   padding:15px 18px;border:1px solid rgba(139,123,255,.18);border-radius:14px;background:rgba(109,93,252,.06);
@@ -220,14 +221,14 @@ canvas{width:100%;border-radius:14px;border:1px solid var(--line);margin-top:22p
 .a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);padding:0 22px;font-size:15px}
 .q.open .a{padding-bottom:18px}
 
-/* OWNER */
+/* ABOUT / OWNER */
 .owner{
   text-align:center;padding:56px 28px;border:1px solid var(--line);border-radius:24px;
   background:radial-gradient(600px 300px at 50% 0,rgba(109,93,252,.16),transparent 70%),var(--card);
 }
 .owner h2{font-size:clamp(26px,3.6vw,40px);margin-bottom:6px}
 .owner .name{font-size:18px;color:var(--p4);font-weight:500}
-.owner p{color:var(--muted);margin:14px auto 24px;max-width:520px}
+.owner p{color:var(--muted);margin:14px auto 24px;max-width:540px}
 
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;background:#0b0b10}
@@ -258,6 +259,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
   nav .btn.nav-cta{display:none}
   .row,.row3{grid-template-columns:1fr}
   .stats{gap:30px}
+  .result{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -266,7 +268,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
 <!-- HEADER -->
 <header>
   <div class="container nav">
-    <a href="#top" class="logo"><i></i><span class="grad-text">Violet Studio</span></a>
+    <a href="#top" class="logo"><i></i><span><span class="grad-text">TubeBoost AI</span> 🚀</span></a>
     <nav>
       <ul id="menu">
         <li><a href="#tool">Generator</a></li>
@@ -274,7 +276,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
         <li><a href="#how">How it works</a></li>
         <li><a href="#tips">Growth Tips</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
     </nav>
     <a href="#tool" class="btn nav-cta small">Start Creating</a>
@@ -285,7 +287,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
 <!-- HERO -->
 <div class="hero" id="top">
   <div class="container">
-    <span class="badge">Free Creator Toolkit</span>
+    <span class="badge">Free YouTube Creator Tools</span>
     <h1>Short Titles. <span class="grad-text">Smart Thumbnails.</span></h1>
     <p>Generate short, unique titles with emoji and hashtag, SEO-ready descriptions, and eye-catching thumbnails with your own photo. All in one clean workspace.</p>
     <div class="hero-actions">
@@ -329,14 +331,14 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
 
           <!-- TITLE TAB -->
           <div class="tab-content active" id="t1">
-            <label>Main Topic / Keyword</label>
-            <input id="tKeyword" placeholder="e.g. Space Facts">
-            <div class="row">
+            <label>Main Topic / Keyword (optional)</label>
+            <input id="tKeyword" placeholder="e.g. Mini Cooler">
+            <div class="row3">
               <div>
                 <label>Tone</label>
                 <select id="tTone">
-                  <option value="curiosity">Curiosity</option>
                   <option value="shock">Shocking</option>
+                  <option value="curiosity">Curiosity</option>
                   <option value="cool">Cool & Clean</option>
                   <option value="howto">How-To</option>
                   <option value="listicle">Listicle</option>
@@ -352,19 +354,30 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
                   <option>TikTok</option>
                 </select>
               </div>
+              <div>
+                <label>Hashtag</label>
+                <input id="tHash" value="#Shorts" maxlength="24">
+              </div>
             </div>
             <div class="actions">
-              <button class="btn" onclick="genTitles()">Generate Titles</button>
+              <button class="btn" onclick="genTitles()">✨ Generate Titles</button>
               <button class="btn ghost" onclick="clearTitles()">Clear</button>
             </div>
-            <p class="hint">Every title is short, in English, with one emoji and one hashtag.</p>
+            <p class="hint">Titles are short, in English, with one emoji and one hashtag. Leave the keyword empty to get ready-made titles.</p>
             <div class="results" id="titleResults"></div>
+
+            <h3 class="sub-title">⚡ Ready-Made Titles</h3>
+            <p class="hint">Tap Copy on any title, no keyword needed.</p>
+            <div class="results" id="readyResults"></div>
+            <div class="actions">
+              <button class="btn ghost small" onclick="copyAllReady()">Copy All 10</button>
+            </div>
           </div>
 
           <!-- DESCRIPTION TAB -->
           <div class="tab-content" id="t2">
             <label>Video / Post Title</label>
-            <input id="dTitle" placeholder="e.g. 🚀 Space Facts You Missed #SpaceFacts">
+            <input id="dTitle" placeholder="e.g. 🔥 Nobody Expected This! #Shorts">
             <label>Short Summary (optional)</label>
             <textarea id="dSummary" placeholder="Briefly describe what your content is about..."></textarea>
             <div class="row">
@@ -572,24 +585,24 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
       <div class="line"></div>
     </div>
     <div class="faq">
-      <div class="q"><button>Is Violet Studio really free?<span>+</span></button><div class="a">Yes. All three generators are free to use with no account required. The site is supported by advertisements.</div></div>
+      <div class="q"><button>Is TubeBoost AI really free?<span>+</span></button><div class="a">Yes. All three generators are free to use with no account required. The site is supported by advertisements.</div></div>
       <div class="q"><button>Do you store my photo or images?<span>+</span></button><div class="a">No. Everything is processed directly in your browser. Uploaded photos and backgrounds are never sent to any server.</div></div>
       <div class="q"><button>How does the background removal work?<span>+</span></button><div class="a">It detects the colour around the edges of your photo and removes it. It works best with plain backgrounds. For perfect results, upload a transparent PNG and the tool will keep it as is.</div></div>
       <div class="q"><button>What size are the thumbnails?<span>+</span></button><div class="a">Thumbnails are 1280 × 720 pixels, the recommended 16:9 size for YouTube and most video platforms.</div></div>
-      <div class="q"><button>How can I contact the owner?<span>+</span></button><div class="a">Email us any time at tubeunknownfact@gmail.com for business enquiries, collaborations or advertising.</div></div>
+      <div class="q"><button>Who owns TubeBoost AI?<span>+</span></button><div class="a">TubeBoost AI is owned and operated by Muhammad Ayan Sheikh.</div></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
+<!-- ABOUT -->
+<section id="about">
   <div class="container">
     <div class="owner">
       <span class="badge">Founder &amp; Owner</span>
       <h2 class="grad-text">Muhammad Ayan Sheikh</h2>
-      <div class="name">Violet Studio</div>
-      <p>For business enquiries, advertising partnerships and collaborations, reach out directly. We reply to every professional message.</p>
-      <a class="btn" href="mailto:tubeunknownfact@gmail.com">✉ tubeunknownfact@gmail.com</a>
+      <div class="name">TubeBoost AI 🚀</div>
+      <p>TubeBoost AI is a free creator toolkit built to help YouTubers and content creators make short titles, clean descriptions and strong thumbnails in seconds.</p>
+      <a class="btn" href="#tool">Try the Generator →</a>
     </div>
   </div>
 </section>
@@ -608,7 +621,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
   <div class="container">
     <div class="foot">
       <div>
-        <div class="logo" style="margin-bottom:14px"><i></i><span class="grad-text">Violet Studio</span></div>
+        <div class="logo" style="margin-bottom:14px"><i></i><span><span class="grad-text">TubeBoost AI</span> 🚀</span></div>
         <p>A clean creator toolkit for generating titles, descriptions and thumbnails with your own photo.</p>
       </div>
       <div>
@@ -621,14 +634,13 @@ footer{border-top:1px solid var(--line);padding:48px 0 28px;margin-top:40px;back
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h4>About</h4>
         <ul>
           <li>Owner: Muhammad Ayan Sheikh</li>
-          <li><a href="mailto:tubeunknownfact@gmail.com">tubeunknownfact@gmail.com</a></li>
         </ul>
       </div>
     </div>
-    <div class="copy">© <span id="yr"></span> Violet Studio. All rights reserved. Owned by Muhammad Ayan Sheikh.</div>
+    <div class="copy">© <span id="yr"></span> TubeBoost AI 🚀. All rights reserved. Owned by Muhammad Ayan Sheikh.</div>
   </div>
 </footer>
 
@@ -693,123 +705,146 @@ const io=new IntersectionObserver(es=>{
 },{threshold:.5});
 counters.forEach(c=>io.observe(c));
 
-/* ---------- TITLE GENERATOR (short + emoji + 1 hashtag) ---------- */
-/* {e}=emoji  {K}=keyword (Title Case)  {n}=number  {h}=hashtag */
+/* ---------- TITLE GENERATOR ---------- */
+/* Ready-made titles (short + emoji + one hashtag) */
+const READY=[
+  "🤯 You Won't Believe This! #Shorts",
+  "👀 Watch Till The End! #Shorts",
+  "⚡ This Changes Everything! #Shorts",
+  "😱 Wait, What Happened?! #Shorts",
+  "🔥 Nobody Expected This! #Shorts",
+  "🎯 The Ultimate Surprise! #Shorts",
+  "🚀 This Is Next Level! #Shorts",
+  "💡 Here's Something Crazy! #Shorts",
+  "🫢 Did You Know This?! #Shorts",
+  "🏆 Simply Unbelievable! #Shorts"
+];
+
+/* Keyword-based templates in the same short style */
+/* {e}=emoji  {K}=keyword  {n}=number  {h}=hashtag */
 const T={
-  curiosity:[
-    "{e} {K}: The Hidden Truth {h}",
-    "{e} Why {K} Hits Different {h}",
-    "{e} The {K} Secret {h}",
-    "{e} {K} Nobody Explains {h}",
-    "{e} What {K} Really Is {h}",
-    "{e} Inside {K} {h}",
-    "{e} {K} Untold {h}",
-    "{e} Decoding {K} {h}",
-    "{e} Wait, {K}? {h}",
-    "{e} The {K} Mystery {h}"
-  ],
   shock:[
-    "{e} {K} Went Too Far {h}",
-    "{e} Stop! {K} Is Wild {h}",
-    "{e} {K} Shocked Me {h}",
-    "{e} Unreal {K} Moment {h}",
-    "{e} {K} Exposed {h}",
-    "{e} No Way, {K}! {h}",
-    "{e} {K}: Mind Blown {h}",
-    "{e} The Dark Side of {K} {h}",
-    "{e} {K} Changes Everything {h}",
-    "{e} Can't Unsee {K} {h}"
+    "{e} {K} Went Crazy! {h}",
+    "{e} Nobody Expected {K}! {h}",
+    "{e} {K} Shocked Everyone! {h}",
+    "{e} This {K} Is Wild! {h}",
+    "{e} You Won't Believe {K}! {h}",
+    "{e} {K} Changes Everything! {h}",
+    "{e} {K} Left Me Speechless! {h}",
+    "{e} Wait, What Is {K}?! {h}"
+  ],
+  curiosity:[
+    "{e} What Is {K}? {h}",
+    "{e} The Truth About {K}! {h}",
+    "{e} {K} Explained Fast! {h}",
+    "{e} Why {K} Is Trending! {h}",
+    "{e} Secret Behind {K}! {h}",
+    "{e} Did You Know {K}?! {h}",
+    "{e} Look Closer at {K}! {h}",
+    "{e} {K}: Watch Till The End! {h}"
   ],
   cool:[
-    "{e} {K}, Simplified {h}",
-    "{e} Pure {K} Vibes {h}",
-    "{e} {K} in Style {h}",
-    "{e} Next Level {K} {h}",
-    "{e} {K} Done Right {h}",
-    "{e} Meet {K} {h}",
-    "{e} {K} Reimagined {h}",
-    "{e} Just {K} {h}",
-    "{e} {K} Hits Hard {h}",
-    "{e} Smooth {K} {h}"
+    "{e} {K} Is Next Level! {h}",
+    "{e} Simply {K}! {h}",
+    "{e} {K} Hits Different! {h}",
+    "{e} Pure {K} Vibes! {h}",
+    "{e} {K}, But Better! {h}",
+    "{e} Smooth {K} Moment! {h}",
+    "{e} The Ultimate {K}! {h}",
+    "{e} {K} Done Right! {h}"
   ],
   howto:[
-    "{e} {K} in {n} Steps {h}",
-    "{e} Learn {K} Fast {h}",
-    "{e} {K} for Beginners {h}",
-    "{e} Master {K} Today {h}",
-    "{e} {K} Made Easy {h}",
-    "{e} Quick {K} Guide {h}",
-    "{e} Start {K} Now {h}",
-    "{e} {K}: Zero to Pro {h}",
-    "{e} Fix Your {K} {h}",
-    "{e} {K} Cheat Sheet {h}"
+    "{e} Make {K} in {n} Steps! {h}",
+    "{e} Learn {K} Fast! {h}",
+    "{e} {K} Made Easy! {h}",
+    "{e} Try This {K} Trick! {h}",
+    "{e} {K} Hack Everyone Needs! {h}",
+    "{e} Easy {K} Idea! {h}",
+    "{e} Start {K} Today! {h}",
+    "{e} {K} in Minutes! {h}"
   ],
   listicle:[
-    "{e} {n} {K} Facts {h}",
-    "{e} Top {n} {K} Secrets {h}",
-    "{e} {n} {K} Tips {h}",
-    "{e} {n} Wild {K} Facts {h}",
-    "{e} Best {n} {K} Ideas {h}",
-    "{e} {n} {K} Mistakes {h}",
-    "{e} {n} {K} Hacks {h}",
-    "{e} {n} Crazy {K} Truths {h}",
-    "{e} {n} {K} You Missed {h}",
-    "{e} Only {n} {K} Matter {h}"
+    "{e} {n} {K} Facts! {h}",
+    "{e} {n} Crazy {K} Tricks! {h}",
+    "{e} Top {n} {K} Ideas! {h}",
+    "{e} {n} {K} You Missed! {h}",
+    "{e} {n} Wild {K} Secrets! {h}",
+    "{e} {n} {K} Hacks! {h}",
+    "{e} {n} {K} Mistakes! {h}",
+    "{e} Only {n} {K} Matter! {h}"
   ]
 };
 const toneEmojis={
-  curiosity:["🔍","🤔","🧠","✨","👀","🌌"],
-  shock:["🔥","😱","💥","⚡","🤯","🚨"],
-  cool:["😎","💜","🌀","🎧","💫","🪩"],
-  howto:["📘","🛠️","🎯","💡","🚀","✅"],
+  shock:["🤯","😱","🔥","⚡","💥","🫢"],
+  curiosity:["👀","🤔","🔍","💡","🎯","✨"],
+  cool:["😎","🚀","🏆","💜","🌀","💫"],
+  howto:["🛠️","💡","🎯","✅","🚀","📘"],
   listicle:["🏆","🔢","📌","⭐","🎬","🌟"]
 };
 const pfIcon={YouTube:"▶",Instagram:"✨",Blog:"✍",Facebook:"👍",TikTok:"🎵"};
 
-function makeTag(k){
-  const words=k.replace(/[^a-zA-Z0-9\s]/g,'').trim().split(/\s+/).filter(Boolean);
-  let tag=words.map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join('');
-  if(tag.length>18)tag=words.slice(0,2).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join('');
-  return '#'+(tag||'Trending');
+function getTag(){
+  let v=document.getElementById('tHash').value.trim().replace(/\s+/g,'');
+  if(!v)v='#Shorts';
+  if(v.charAt(0)!=='#')v='#'+v;
+  return v;
 }
 function shortKeyword(k){
-  /* keep keyword compact so title stays short */
   const w=k.trim().split(/\s+/);
-  return cap(w.slice(0,3).join(' '));
+  return cap(w.slice(0,2).join(' '));
 }
-function genTitles(){
-  const raw=document.getElementById('tKeyword').value.trim();
-  if(!raw){toast('Please enter a keyword');return;}
-  const tone=document.getElementById('tTone').value;
-  const pf=document.getElementById('tPlatform').value;
-  const nums=[3,5,7,9,10,12];
-  const K=shortKeyword(raw),h=makeTag(raw);
-  const emos=shuffle(toneEmojis[tone]);
-  const list=shuffle(T[tone]).slice(0,6).map((t,i)=>{
-    return t.replace(/{e}/g,emos[i%emos.length])
-            .replace(/{K}/g,K)
-            .replace(/{n}/g,pick(nums))
-            .replace(/{h}/g,h);
-  });
-  const box=document.getElementById('titleResults');
+function renderTitles(box,list,pf){
   box.innerHTML='';
   list.forEach(t=>{
     const d=document.createElement('div');d.className='result';
-    const len=t.length;
     const info=document.createElement('div');
     const p=document.createElement('p');p.textContent=t;
     const s=document.createElement('small');
-    s.textContent=`${pfIcon[pf]} ${pf} • ${len} characters ${len<=45?'• Short & clean':'• Slightly long'}`;
+    s.textContent=`${pfIcon[pf]||'▶'} ${pf} • ${t.length} characters • Short & clean`;
     info.appendChild(p);info.appendChild(s);
     const b=document.createElement('button');b.className='btn small';b.textContent='Copy';
     b.onclick=()=>copyText(t);
     d.appendChild(info);d.appendChild(b);box.appendChild(d);
   });
 }
+function readyWithTag(){
+  const tag=getTag();
+  return READY.map(t=>t.replace('#Shorts',tag));
+}
+function genTitles(){
+  const raw=document.getElementById('tKeyword').value.trim();
+  const tone=document.getElementById('tTone').value;
+  const pf=document.getElementById('tPlatform').value;
+  const tag=getTag();
+  const box=document.getElementById('titleResults');
+  if(!raw){
+    renderTitles(box,shuffle(readyWithTag()).slice(0,6),pf);
+    return;
+  }
+  const nums=[3,5,7,9,10];
+  const K=shortKeyword(raw);
+  const emos=shuffle(toneEmojis[tone]);
+  const list=shuffle(T[tone]).slice(0,6).map((t,i)=>{
+    return t.replace(/{e}/g,emos[i%emos.length])
+            .replace(/{K}/g,K)
+            .replace(/{n}/g,pick(nums))
+            .replace(/{h}/g,tag);
+  });
+  renderTitles(box,list,pf);
+}
 function clearTitles(){
   document.getElementById('titleResults').innerHTML='';
   document.getElementById('tKeyword').value='';
 }
+function renderReady(){
+  renderTitles(document.getElementById('readyResults'),readyWithTag(),document.getElementById('tPlatform').value);
+}
+function copyAllReady(){
+  copyText(readyWithTag().join('\n'));
+}
+document.getElementById('tHash').addEventListener('input',renderReady);
+document.getElementById('tPlatform').addEventListener('change',renderReady);
+renderReady();
 
 /* ---------- Description generator ---------- */
 function genDesc(){
@@ -824,7 +859,7 @@ function genDesc(){
     `Get ready, because "${title}" is going to change how you see things.`
   ];
   const body=sum||`We explore the most fascinating details, break down what matters, and share insights you won't find anywhere else.`;
-  const tags=keys.length?keys.map(k=>'#'+k.replace(/\s+/g,'')).join(' '):'#facts #viral #trending';
+  const tags=keys.length?keys.map(k=>'#'+k.replace(/\s+/g,'')).join(' '):'#Shorts #YouTubeShorts #Viral';
   const out=
 `${pick(hooks)}
 
@@ -839,8 +874,6 @@ ${body}
 🔔 Enjoy the content? Subscribe to ${brand}, hit the bell icon and share this with a friend who'd love it.
 
 💬 Tell us your thoughts in the comments below. We read every one!
-
-📩 Business enquiries: tubeunknownfact@gmail.com
 
 ${tags}${keys.length?'\n\nKeywords: '+keys.join(', '):''}`;
   document.getElementById('descOut').textContent=out;
@@ -905,16 +938,14 @@ function buildPhoto(){
   if(mode==='cutout'){
     const data=octx.getImageData(0,0,w,h);
     const px=data.data;
-    /* if corners already transparent, keep as is */
     const cornerA=[px[3],px[(w-1)*4+3],px[((h-1)*w)*4+3],px[((h-1)*w+(w-1))*4+3]];
     const alreadyTransparent=cornerA.filter(a=>a<10).length>=3;
     if(!alreadyTransparent){
       const tol=+document.getElementById('thTol').value;
-      /* average colour of the 4 corners (5x5 patches) */
       let r=0,g=0,b=0,c=0;
       const patch=(x0,y0)=>{
         for(let y=y0;y<y0+5;y++)for(let x=x0;x<x0+5;x++){
-          const xx=Math.min(w-1,x),yy=Math.min(h-1,y);
+          const xx=Math.min(w-1,Math.max(0,x)),yy=Math.min(h-1,Math.max(0,y));
           const i=(yy*w+xx)*4;r+=px[i];g+=px[i+1];b+=px[i+2];c++;
         }
       };
@@ -936,7 +967,6 @@ function buildPhoto(){
         const x=p%w,y=(p-x)/w;
         tryPush(x+1,y);tryPush(x-1,y);tryPush(x,y+1);tryPush(x,y-1);
       }
-      /* apply transparency + soften edges */
       const edge=new Uint8Array(w*h);
       for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){
         const p=y*w+x;
@@ -1055,7 +1085,7 @@ function drawThumb(){
   ctx.strokeStyle=th.a;ctx.lineWidth=6;ctx.strokeRect(26,26,W-52,H-52);
   ctx.strokeStyle=th.a+'66';ctx.lineWidth=2;ctx.strokeRect(42,42,W-84,H-84);
 
-  /* ---- emoji (big when no photo, small when photo) ---- */
+  /* ---- emoji (big when no photo) ---- */
   if(emo&&!hasPhoto){
     ctx.font='200px serif';ctx.textAlign='right';ctx.textBaseline='middle';
     ctx.shadowColor='rgba(0,0,0,.6)';ctx.shadowBlur=30;
@@ -1117,12 +1147,12 @@ function drawThumb(){
   /* watermark */
   ctx.font=`500 22px 'Inter', sans-serif`;ctx.fillStyle=th.a+'cc';
   ctx.textAlign=hasPhoto&&side==='right'?'left':'right';
-  ctx.fillText('VIOLET STUDIO',hasPhoto&&side==='right'?80:W-80,H-70);
+  ctx.fillText('TUBEBOOST AI 🚀',hasPhoto&&side==='right'?80:W-80,H-70);
 }
 function downloadThumb(){
   const cv=document.getElementById('thumb');
   const a=document.createElement('a');
-  a.download='violet-thumbnail.png';
+  a.download='TubeBoost-Thumbnail.png';
   a.href=cv.toDataURL('image/png');
   a.click();
   toast('Thumbnail downloaded ✓');
